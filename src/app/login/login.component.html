@@ -1,0 +1,42 @@
+<div fxLayout="column" fxLayoutAlign="space-between center">
+  <div fxLayout="row wrap" class="w-100" fxLayoutAlign="center center" fxLayoutGap="1">
+    <div class="w-100" fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" fxLayoutAlign="center center"
+     style="padding-bottom: 5%;">
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <img src="./assets/img/full-logo.png" alt="logo" class="logo-full">
+
+        <h2 class="color-primary" style="padding-left: 10%">
+          Facilitando o agendamento e acompanhamento de consultas médicas.
+        </h2>
+      </div>
+    </div>
+    <div class="w-100" fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" fxLayoutAlign="center center">
+      <mat-card id="card-login" fxFlex="80" fxFlex.sm="70" fxFlex.xs="70" fxLayout="column" fxLayoutAlign="center center">
+        <mat-card-header style="padding-bottom: 10px">
+          <mat-card-title style="text-align: center; color: #fff">Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content >
+          <form fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between center" fxLayoutGap="1"
+                [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-form-field fxFlex="100" color="primary">
+              <mat-label class="color-primary">Email</mat-label>
+              <input matInput formControlName="email" [required]="true">
+              <mat-error *ngIf="invalidForm" class="error" >{{'Campo Obrigatório'}}</mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="100" color="primary">
+              <mat-label class="color-primary">Senha</mat-label>
+              <input matInput formControlName="password" type="password" [required]="true">
+              <mat-error *ngIf="invalidForm" class="error">{{'Campo Obrigatório'}}</mat-error>
+            </mat-form-field>
+            <div fxLayoutAlign="center center" class="w-100">
+              <button fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" class="login-btn"
+                      mat-button type="submit">Login</button>
+            </div>
+
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

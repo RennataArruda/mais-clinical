@@ -1,0 +1,11 @@
+<div style="padding: 10px;">
+  <div fxLayout="row" class="w-100" fxLayoutAlign="start center" style="padding-bottom: 5px">
+    <mat-icon class="mat-icon-md color-primary">help_outline</mat-icon>
+    <p class="color-primary">{{inputdata.message}}</p>
+  </div>
+
+  <div mat-dialog-actions fxLayoutAlign="start center" class="w-100">
+    <a mat-raised-button color="primary" (click)="onConfirm()">Confirmar</a>
+    <a mat-raised-button color="warn" (click)="onClose()">Cancelar</a>
+  </div>
+</div>

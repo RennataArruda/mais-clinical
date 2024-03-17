@@ -1,0 +1,28 @@
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <img src="../../../assets/img/logo.png" alt="Logo" class="logo-img">
+    </button>
+    <div class="logo-text" @fadeInOut *ngIf="collapsed">CareSync</div>
+    <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
+      <mat-icon fontIcon="close"></mat-icon>
+    </button>
+  </div>
+
+  <ul class="sidenav-nav">
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link" (click)="logout()">
+        <mat-icon class="sidenav-link-icon">power_settings_new</mat-icon>
+        <span class="sidenav-link-text size-2 bold" @fadeInOut *ngIf="collapsed">Logout</span>
+      </a>
+    </li>
+    <li class="sidenav-nav-item" *ngFor="let item of navData">
+        <a class="sidenav-nav-link" (click)="selectMenuItem(item?.position)"
+           *ngIf="(!!item?.viewOnlyRoot && !!userRoot) || !item?.viewOnlyRoot ">
+            <mat-icon class="sidenav-link-icon" fontIcon="{{item.icon}}"></mat-icon>
+            <span class="sidenav-link-text size-2 bold" @fadeInOut *ngIf="collapsed">{{item.name}}</span>
+        </a>
+    </li>
+  </ul>
+
+</div>

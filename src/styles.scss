@@ -1,0 +1,106 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import './app/style/theme/theme';
+
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+  local('MaterialIcons-Regular'),
+  url(./app/style/icon/MaterialIcons-Regular.woff2) format('woff2')
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: .5rem;
+  background-color: #fff;
+  margin: 1.25rem 0 1.25rem 0;
+  box-shadow: 0 .25rem .5rem #e6edef;
+
+  .card-head {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #edf1f7;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .card-body {
+    padding: 1rem 1.5rem;
+  }
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.size-1 {
+  font-size: medium;
+}
+
+.size-2 {
+  font-size: large;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.error {
+  color: red;
+}
+
+.color-primary {
+  color: #355838;
+}
+
+
+.mat-icon-md {
+  font-size: 30px;
+  height: 30px !important;
+  width: 30px !important;
+  margin-right: 6px;
+}
+
+.mat-icon-lg {
+  font-size: 35px;
+  height: 35px !important;
+  width: 35px !important;
+  margin-right: 6px;
+}
