@@ -10,7 +10,7 @@
     <div fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between center" fxLayoutGap="1">
       <mat-form-field fxFlex="100" color="primary">
         <mat-label class="color-primary">Nome</mat-label>
-        <input matInput formControlName="name" [required]="true" [minLength]="3">
+        <input matInput formControlName="nome" [required]="true" [minLength]="3">
         <mat-error *ngIf="invalidForm" class="error" >{{'Campo Obrigatório'}}</mat-error>
       </mat-form-field>
       <mat-form-field fxFlex="100" color="primary">

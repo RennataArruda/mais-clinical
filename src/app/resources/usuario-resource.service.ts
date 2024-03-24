@@ -5,7 +5,7 @@ import {Observable, of} from "rxjs";
 @Injectable({providedIn: 'root'})
 export class UsuarioResourceService {
 
-  commonUrl = 'https://x8ki-letl-twmt.n7.xano.io/api:e_VlRcGf/usuario';
+  commonUrl = 'https://x8ki-letl-twmt.n7.xano.io/api:WwQP6b4e/usuarios';
 
   constructor(private http: HttpClient) {}
 

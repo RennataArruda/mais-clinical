@@ -7,7 +7,7 @@ import {of} from "rxjs";
 })
 export class AuthResourceService {
 
-  commonUrl = 'https://x8ki-letl-twmt.n7.xano.io/api:e_VlRcGf/auth';
+  commonUrl = 'https://x8ki-letl-twmt.n7.xano.io/api:WwQP6b4e/auth';
 
   constructor(private http: HttpClient) {}
 
