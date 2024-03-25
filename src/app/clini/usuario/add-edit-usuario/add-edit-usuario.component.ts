@@ -37,7 +37,7 @@ export class AddEditUsuarioComponent implements OnInit {
       this.form.get('password')?.updateValueAndValidity();
 
       this.form.get('id')?.setValue(this.editdata.id);
-      this.form.get('name')?.setValue(this.editdata.name);
+      this.form.get('nome')?.setValue(this.editdata.nome);
       this.form.get('email')?.setValue(this.editdata.email);
       this.form.get('ativo')?.setValue(this.editdata.ativo);
       this.form.get('root')?.setValue(this.editdata.root);
@@ -50,7 +50,7 @@ export class AddEditUsuarioComponent implements OnInit {
 
   form = this.builder.group({
     id: this.builder.control(''),
-    name: this.builder.control('', Validators.compose([Validators.required])),
+    nome: this.builder.control('', Validators.compose([Validators.required])),
     email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
     password: this.builder.control('', Validators.compose([Validators.required])),
     ativo: this.builder.control(true),
@@ -72,7 +72,7 @@ export class AddEditUsuarioComponent implements OnInit {
       if (!!model && model.id){
         const _model = Object.assign({
           id: model.id,
-          name: model.name,
+          nome: model.nome,
           email: model.email,
           ativo: model.ativo,
           root: model.root

@@ -29,7 +29,7 @@ export class UsuarioComponent implements OnInit, OnDestroy {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["ativo", "id", "name", "email", "root", "editar", "inativar", "senha"];
+  displayedColumns: string[] = ["ativo", "id", "nome", "email", "root", "editar", "inativar", "senha"];
 
   constructor(private resource: UsuarioResourceService,
               private attAuth: AuthService,
