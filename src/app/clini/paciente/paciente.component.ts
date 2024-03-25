@@ -8,6 +8,7 @@ import {PacienteResourceService} from "../../resources/paciente-resource.service
 import {MatTableDataSource} from "@angular/material/table";
 import {AddEditUsuarioComponent} from "../usuario/add-edit-usuario/add-edit-usuario.component";
 import {ConfirmDialogComponent} from "../../component/dialogs/confirm/confirm-dialog.component";
+import {AddEditPacienteComponent} from "./add-edit-paciente/add-edit-paciente.component";
 
 @Component({
   selector: 'app-paciente',
@@ -34,14 +35,14 @@ export class PacienteComponent {
   constructor(private resource: PacienteResourceService,
               private attAuth: AuthService,
               private toastr: ToastrService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+  ) {
   }
 
 
   ngOnInit() {
     this.attAuth.validarUsuario();
     this.search();
-
   }
 
   ngOnDestroy() {}
@@ -68,11 +69,11 @@ export class PacienteComponent {
   }
 
   onAdd(){
-    this.openModal({}, 'Adicionar Paciente', AddEditUsuarioComponent);
+    this.openModal({}, 'Adicionar Paciente', AddEditPacienteComponent);
   }
 
   onEdit(item: any){
-    this.openModal(item, 'Editar Paciente', AddEditUsuarioComponent);
+    this.openModal(item, 'Editar Paciente', AddEditPacienteComponent);
   }
 
   getBodyClass(): string {
@@ -104,4 +105,6 @@ export class PacienteComponent {
       this.dataPagination.paginator.firstPage();
     }
   }
+
+
 }

@@ -37,4 +37,24 @@ export class PacienteResourceService {
     });
   }
 
+  get(idPaciente: number): Observable<any> {
+    const token = sessionStorage.getItem('token') ?? '';
+    if (!token) {return of({});}
+    return this.http.get<any>(`${this.commonUrl}/${idPaciente}`, {
+      headers: {
+        Authorization: token ? `${token}` : '',
+      }
+    });
+  }
+
+  update(paciente: any, idPaciente: number): Observable<any> {
+    const token = sessionStorage.getItem('token') ?? '';
+    if (!token) {return of({});}
+    return this.http.patch<any>(`${this.commonUrl}/${idPaciente}`, paciente, {
+      headers: {
+        Authorization: token ? `${token}` : '',
+      }
+    });
+  }
+
 }

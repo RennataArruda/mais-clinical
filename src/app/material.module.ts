@@ -15,8 +15,7 @@ import {MatMenuModule} from "@angular/material/menu";
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatMenuModule
-
+    MatMenuModule,
   ],
   exports: [
     FormsModule,
@@ -24,7 +23,7 @@ import {MatMenuModule} from "@angular/material/menu";
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatMenuModule
+    MatMenuModule,
   ]
 })
 export class MaterialModule { }

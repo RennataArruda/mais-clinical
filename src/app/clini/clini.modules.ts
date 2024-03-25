@@ -16,6 +16,8 @@ import {MatDividerModule} from "@angular/material/divider";
 import {AlterarSenhaComponent} from "./usuario/alterar-senha/alterar-senha.component";
 import {ConfirmDialogComponent} from "../component/dialogs/confirm/confirm-dialog.component";
 import {PacienteComponent} from "./paciente/paciente.component";
+import {AddEditPacienteComponent} from "./paciente/add-edit-paciente/add-edit-paciente.component";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   imports: [
@@ -28,7 +30,8 @@ import {PacienteComponent} from "./paciente/paciente.component";
     MatPaginatorModule,
     MatDialogModule,
     MatTooltipModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDatepickerModule
   ],
   exports: [
     MatCardModule,
@@ -53,7 +56,8 @@ import {PacienteComponent} from "./paciente/paciente.component";
     AddEditUsuarioComponent,
     AlterarSenhaComponent,
     ConfirmDialogComponent,
-    PacienteComponent
+    PacienteComponent,
+    AddEditPacienteComponent
   ],
   bootstrap: [
     SidenavComponent,
