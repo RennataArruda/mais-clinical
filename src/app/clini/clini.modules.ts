@@ -43,7 +43,8 @@ import {PacienteComponent} from "./paciente/paciente.component";
     MatDialogModule,
     MatTooltipModule,
     AddEditUsuarioComponent,
-    MatDividerModule
+    MatDividerModule,
+    PacienteComponent
   ],
   declarations: [
     SidenavComponent,

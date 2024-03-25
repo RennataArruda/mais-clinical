@@ -11,6 +11,12 @@ export const navData: SideNavInterface[] = [
     name: 'Usuário',
     position: 2,
     viewOnlyRoot: true
+  },
+  {
+    icon: 'account_circle',
+    name: 'Paciente',
+    position: 3,
+    viewOnlyRoot: true
   }
 ];
 
