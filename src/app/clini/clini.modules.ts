@@ -15,6 +15,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatDividerModule} from "@angular/material/divider";
 import {AlterarSenhaComponent} from "./usuario/alterar-senha/alterar-senha.component";
 import {ConfirmDialogComponent} from "../component/dialogs/confirm/confirm-dialog.component";
+import {PacienteComponent} from "./paciente/paciente.component";
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import {ConfirmDialogComponent} from "../component/dialogs/confirm/confirm-dialo
     UsuarioComponent,
     AddEditUsuarioComponent,
     AlterarSenhaComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    PacienteComponent
   ],
   bootstrap: [
     SidenavComponent,
