@@ -30,7 +30,7 @@ export class PacienteComponent {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["cpf", "nome", "dataNascimento"];
+  displayedColumns: string[] = ["cpf", "nome_completo", "dataNascimento", "editar"];
 
   constructor(private resource: PacienteResourceService,
               private attAuth: AuthService,
@@ -87,15 +87,20 @@ export class PacienteComponent {
   }
 
   search(){
-    this.resource.search().pipe().subscribe(response => {
+    this.resource.search().subscribe(response => {
+      // Exibe o objeto retornado no console
+      console.log(response);
+
       this.result = response.sort((a, b) => a.id - b.id);
       this.dataPagination = new MatTableDataSource(this.getData());
       this.totalRecords = this.dataPagination.data.length;
       this.dataPagination.paginator = this.paginator;
     }, error => {
       this.toastr.error(error, 'Opa!');
+      console.log(this.getData())
     });
   }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -24,13 +24,13 @@ export class PacienteResourceService {
     });
   }
 
-  create(usuario: any): Observable<any>{
+  create(paciente: any): Observable<any>{
     let token: string;
 
     // @ts-ignore
     token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of({});}
-    return this.http.post<any>(this.commonUrl, usuario,{
+    return this.http.post<any>(this.commonUrl, paciente,{
       headers: {
         Authorization: token ? `${token}` : '',
       }

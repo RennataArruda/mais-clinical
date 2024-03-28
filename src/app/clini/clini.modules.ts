@@ -18,21 +18,23 @@ import {ConfirmDialogComponent} from "../component/dialogs/confirm/confirm-dialo
 import {PacienteComponent} from "./paciente/paciente.component";
 import {AddEditPacienteComponent} from "./paciente/add-edit-paciente/add-edit-paciente.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
-  imports: [
-    MatCardModule,
-    MaterialModule,
-    CommonModule,
-    MatIconModule,
-    MatTableModule,
-    FlexModule,
-    MatPaginatorModule,
-    MatDialogModule,
-    MatTooltipModule,
-    MatDividerModule,
-    MatDatepickerModule
-  ],
+    imports: [
+        MatCardModule,
+        MaterialModule,
+        CommonModule,
+        MatIconModule,
+        MatTableModule,
+        FlexModule,
+        MatPaginatorModule,
+        MatDialogModule,
+        MatTooltipModule,
+        MatDividerModule,
+        MatDatepickerModule,
+        MatSelectModule
+    ],
   exports: [
     MatCardModule,
     MaterialModule,
