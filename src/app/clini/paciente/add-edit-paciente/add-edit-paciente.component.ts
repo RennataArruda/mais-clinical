@@ -75,17 +75,24 @@ export class AddEditPacienteComponent implements OnInit {
     if (this.form.invalid) {
       this.toastr.error('Existem campos inválidos', 'Opa!');
       this.invalidForm = true;
-
-      setTimeout(() => {this.invalidForm = false}, 2000);
+      setTimeout(() => { this.invalidForm = false }, 2000);
+      return; // Retorna para evitar a execução do restante da função se o formulário for inválido
     }
-    if (!!model && model.id){
-      const _model = Object.assign({
+    if (!!model && model.id) {
+      const _model = {
         id: model.id,
-        nome: model.nome_completo,
+        nome_completo: model.nome_completo,
         email: model.email,
-        cpf:model.cpf,
-
-      })
+        cpf: model.cpf,
+        endereco: model.endereco,
+        celular: model.celular,
+        contato_adicional: model.contato_adicional,
+        cns: model.cns,
+        numero_carteira: model.numero_carteira,
+        convenio: model.convenio,
+        convenio_id: model.convenio_id,
+        data_nascimento: model.data_nascimento
+      };
       this.update(_model);
     } else {
       this.create(model);
