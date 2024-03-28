@@ -9,6 +9,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {AddEditUsuarioComponent} from "../usuario/add-edit-usuario/add-edit-usuario.component";
 import {ConfirmDialogComponent} from "../../component/dialogs/confirm/confirm-dialog.component";
 import {AddEditPacienteComponent} from "./add-edit-paciente/add-edit-paciente.component";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-paciente',
@@ -30,7 +31,7 @@ export class PacienteComponent {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["cpf", "nome_completo", "dataNascimento", "editar"];
+  displayedColumns: string[] = ["cpf", "nome_completo", "dataNascimento", "editar", "apagar"];
 
   constructor(private resource: PacienteResourceService,
               private attAuth: AuthService,
@@ -76,6 +77,10 @@ export class PacienteComponent {
     this.openModal(item, 'Editar Paciente', AddEditPacienteComponent);
   }
 
+  onDelete(item: any){
+    this.delete(item)
+  }
+
   getBodyClass(): string {
     let styleClass = '';
     if(this.collapsed && this.screenWidth > 768) {
@@ -110,6 +115,27 @@ export class PacienteComponent {
       this.dataPagination.paginator.firstPage();
     }
   }
+
+  delete(model: any) {
+    // Verifica se o ID do paciente está definido e é válido
+    if (model.id) {
+      this.resource.delete(model.id).pipe(first()).subscribe(res => {
+        if (res) {
+          this.toastr.success('Paciente deletado com sucesso', 'Sucesso!');
+          // Execute qualquer outra lógica necessária após a exclusão do paciente
+        }
+      }, error => {
+        // Exibe o erro no console
+        console.log(error);
+        // Trate o erro conforme necessário, como exibir uma mensagem de erro para o usuário
+        this.toastr.error('Erro ao deletar paciente', 'Erro!');
+      });
+    } else {
+      console.error('O ID do paciente não está definido ou é inválido.');
+      // Trate esse caso conforme necessário, como exibindo uma mensagem de erro para o usuário.
+    }
+  }
+
 
 
 }

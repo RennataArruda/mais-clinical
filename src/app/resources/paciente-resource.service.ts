@@ -57,4 +57,18 @@ export class PacienteResourceService {
     });
   }
 
+  delete(idPaciente: number): Observable<any> {
+    const token = sessionStorage.getItem('token') ?? '';
+    if (!token) {
+      return of({});
+    }
+
+    return this.http.delete<any>(`${this.commonUrl}/${idPaciente}`, {
+      headers: {
+        Authorization: token ? `${token}` : '',
+      }
+    });
+  }
+
+
 }
