@@ -7,7 +7,7 @@ export const navData: SideNavInterface[] = [
     position: 1
   },
   {
-    icon: 'account_circle',
+    icon: 'manage_accounts',
     name: 'Usuário',
     position: 2,
     viewOnlyRoot: true
