@@ -26,7 +26,11 @@ export class AddEditUsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.inputdata = this.data;
     if(!!this.inputdata.code && !!this.inputdata.code.id){
-      this.setData(this.inputdata.code)
+      this.setData(this.inputdata.code);
+
+      if (!!this.inputdata.view){
+        this.form.disable();
+      }
     }
   }
 
@@ -59,6 +63,9 @@ export class AddEditUsuarioComponent implements OnInit {
 
   onSubmit() {
     const model = this.form.value;
+    if (!!this.inputdata.view){
+      return;
+    }
     if (this.form.invalid) {
       this.toastr.error('Existem campos inválidos', 'Opa!');
       this.invalidForm = true;

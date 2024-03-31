@@ -29,7 +29,7 @@ export class UsuarioComponent implements OnInit, OnDestroy {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["ativo", "id", "nome", "email", "root", "editar", "inativar", "senha"];
+  displayedColumns: string[] = ["ativo", "id", "nome", "email", "root","visualizar", "editar", "inativar", "senha"];
 
   constructor(private resource: UsuarioResourceService,
               private attAuth: AuthService,
@@ -59,14 +59,15 @@ export class UsuarioComponent implements OnInit, OnDestroy {
     return this.result;
   }
 
-  openModal(code: any, title: any,component:any) {
+  openModal(code: any, title: any,component:any, view?: boolean) {
     var _popup = this.dialog.open(component, {
       width: '50%',
       enterAnimationDuration: '1000ms',
       exitAnimationDuration: '1000ms',
       data: {
         title: title,
-        code: code
+        code: code,
+        view: view
       }
     });
     _popup.afterClosed().subscribe(item => {
@@ -104,6 +105,10 @@ export class UsuarioComponent implements OnInit, OnDestroy {
 
   onEdit(item: any){
     this.openModal(item, 'Editar Usuário', AddEditUsuarioComponent);
+  }
+
+  onView(item: any) {
+    this.openModal(item, 'Visualizar Usuário', AddEditUsuarioComponent, true);
   }
 
   inativar(item: any){
