@@ -13,7 +13,7 @@ export const navData: SideNavInterface[] = [
     viewOnlyRoot: true
   },
   {
-    icon: 'account_circle',
+    icon: 'personal_injury',
     name: 'Paciente',
     position: 3,
     viewOnlyRoot: true
