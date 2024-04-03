@@ -29,8 +29,12 @@
               <mat-error *ngIf="invalidForm" class="error">{{'Campo Obrigatório'}}</mat-error>
             </mat-form-field>
             <div fxLayoutAlign="center center" class="w-100">
-              <button fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" class="login-btn"
-                      mat-button type="submit">Login</button>
+              <button fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" class="login-btn" mat-button type="submit"
+                      [disabled]="loading">
+                <span *ngIf="!loading">Login</span>
+                <mat-spinner diameter="20" *ngIf="loading" color="accent"></mat-spinner>
+              </button>
+
             </div>
 
           </form>

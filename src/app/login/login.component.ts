@@ -9,11 +9,13 @@ import {first} from "rxjs";
 import {AuthService} from "../services/auth/auth.service";
 import {CommonModule} from "@angular/common";
 import {FlexModule} from "@angular/flex-layout/flex";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {finalize} from "rxjs/operators";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  imports: [MatCardModule, MaterialModule, FlexModule, CommonModule],
+  imports: [MatCardModule, MaterialModule, FlexModule, CommonModule, MatProgressSpinnerModule],
   standalone: true,
   styleUrls: ['./login.component.scss']
 })
@@ -25,6 +27,9 @@ export class LoginComponent implements OnInit {
               private authResource: AuthResourceService,
               private router: Router) {
   }
+
+  loading: boolean = false;
+
 
   invalidForm: boolean = false;
   form: FormGroup = this.builder.group({
@@ -38,6 +43,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true; // Ativar o spinner
+
     if (this.form.invalid) {
       this.toastr.error('Existem campos inválidos', 'Opa!');
       this.invalidForm = true;
@@ -48,7 +55,10 @@ export class LoginComponent implements OnInit {
         if (res){
           sessionStorage.setItem('token', res.authToken);
 
-          this.authResource.getUser().pipe().subscribe(response => {
+          this.authResource.getUser().pipe(finalize(() => {
+            this.loading = false; // Desativar o spinner
+
+          })).subscribe(response => {
             if (!response.ativo){
               this.toastr.error('Usuário Inativo', 'Opa!');
               this.router.navigateByUrl('/login');
