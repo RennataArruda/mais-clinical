@@ -23,6 +23,12 @@
 
     </div>
 
+    <div *ngIf="!dataPagination">
+      <!-- Adicione aqui o spinner -->
+      <mat-spinner diameter="50" color="primary"></mat-spinner>
+    </div>
+
+    <div *ngIf="dataPagination" class="w-100">
     <table mat-table [dataSource]="dataPagination" class="w-100">
       <ng-container matColumnDef="ativo">
         <th mat-header-cell *matHeaderCellDef></th>
@@ -107,5 +113,6 @@
                    [pageSizeOptions]="[5]" aria-label="Select page of dataPagination">
     </mat-paginator>
 
+  </div>
   </div>
 </div>

@@ -9,13 +9,12 @@ import {first} from "rxjs";
 import {AuthService} from "../services/auth/auth.service";
 import {CommonModule} from "@angular/common";
 import {FlexModule} from "@angular/flex-layout/flex";
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {finalize} from "rxjs/operators";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  imports: [MatCardModule, MaterialModule, FlexModule, CommonModule, MatProgressSpinnerModule],
+  imports: [MatCardModule, MaterialModule, FlexModule, CommonModule],
   standalone: true,
   styleUrls: ['./login.component.scss']
 })
