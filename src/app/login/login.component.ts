@@ -60,11 +60,14 @@ export class LoginComponent implements OnInit {
           })).subscribe(response => {
             if (!response.ativo){
               this.toastr.error('Usuário Inativo', 'Opa!');
+              this.loading = false; // Desativar o spinner
               this.router.navigateByUrl('/login');
+
               return;
             } else {
               this.attAuth.setCurrentUser(JSON.stringify(response));
               this.router.navigateByUrl('/clini');
+
             }
 
           }, error => {
@@ -74,6 +77,8 @@ export class LoginComponent implements OnInit {
         }
       }, error => {
         this.toastr.error('Credenciais Inválidas', 'Opa!');
+        this.loading = false; // Desativar o spinner
+
       });
     }
   }
