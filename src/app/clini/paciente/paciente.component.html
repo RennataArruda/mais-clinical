@@ -41,7 +41,7 @@
 
       <ng-container matColumnDef="dataNascimento">
         <th mat-header-cell *matHeaderCellDef> Data Nascimento </th>
-        <td mat-cell *matCellDef="let element"> {{element.data_nascimento}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.data_nascimento | dataFormat}} </td>
       </ng-container>
 
 

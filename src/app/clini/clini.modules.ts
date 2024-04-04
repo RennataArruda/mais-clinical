@@ -19,22 +19,24 @@ import {PacienteComponent} from "./paciente/paciente.component";
 import {AddEditPacienteComponent} from "./paciente/add-edit-paciente/add-edit-paciente.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
+import {DataFormatPipe} from "../services/utils/data-format.pipe";
 
 @NgModule({
-    imports: [
-        MatCardModule,
-        MaterialModule,
-        CommonModule,
-        MatIconModule,
-        MatTableModule,
-        FlexModule,
-        MatPaginatorModule,
-        MatDialogModule,
-        MatTooltipModule,
-        MatDividerModule,
-        MatDatepickerModule,
-        MatSelectModule
-    ],
+  imports: [
+    MatCardModule,
+    MaterialModule,
+    CommonModule,
+    MatIconModule,
+    MatTableModule,
+    FlexModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatDividerModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    DataFormatPipe
+  ],
   exports: [
     MatCardModule,
     MaterialModule,
