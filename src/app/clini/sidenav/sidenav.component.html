@@ -10,19 +10,18 @@
   </div>
 
   <ul class="sidenav-nav">
-    <li class="sidenav-nav-item">
+    <li class="sidenav-nav-item" *ngFor="let item of navData">
+      <a class="sidenav-nav-link" (click)="selectMenuItem(item?.position)"
+         *ngIf="(!!item?.viewOnlyRoot && !!userRoot) || !item?.viewOnlyRoot ">
+        <mat-icon class="sidenav-link-icon" fontIcon="{{item.icon}}"></mat-icon>
+        <span class="sidenav-link-text size-2 bold" @fadeInOut *ngIf="collapsed">{{item.name}}</span>
+      </a>
+    </li>
+    <li class="sidenav-nav-item sidenav-nav-item-logout">
       <a class="sidenav-nav-link" (click)="logout()">
         <mat-icon class="sidenav-link-icon">power_settings_new</mat-icon>
         <span class="sidenav-link-text size-2 bold" @fadeInOut *ngIf="collapsed">Logout</span>
       </a>
     </li>
-    <li class="sidenav-nav-item" *ngFor="let item of navData">
-        <a class="sidenav-nav-link" (click)="selectMenuItem(item?.position)"
-           *ngIf="(!!item?.viewOnlyRoot && !!userRoot) || !item?.viewOnlyRoot ">
-            <mat-icon class="sidenav-link-icon" fontIcon="{{item.icon}}"></mat-icon>
-            <span class="sidenav-link-text size-2 bold" @fadeInOut *ngIf="collapsed">{{item.name}}</span>
-        </a>
-    </li>
   </ul>
-
 </div>
