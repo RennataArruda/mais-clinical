@@ -31,7 +31,7 @@ export class PacienteComponent {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["cpf", "nome_completo", "dataNascimento", "editar", "apagar"];
+  displayedColumns: string[] = ["cpf", "nome_completo", "dataNascimento", "visualizar", "editar", "apagar"];
 
   constructor(private resource: PacienteResourceService,
               private attAuth: AuthService,
@@ -48,22 +48,28 @@ export class PacienteComponent {
 
   ngOnDestroy() {}
 
-  openModal(code: any, title: any,component:any) {
+  openModal(code: any, title: any,component:any, view?: boolean) {
     var _popup = this.dialog.open(component, {
       width: '50%',
       enterAnimationDuration: '1000ms',
       exitAnimationDuration: '1000ms',
       data: {
         title: title,
-        code: code
+        code: code,
+        view: view,
       }
     });
+
     _popup.afterClosed().subscribe(item => {
       console.log(item)
       this.search();
     })
   }
 
+
+  onView(item: any) {
+    this.openModal(item, 'Visualizar Paciente', AddEditPacienteComponent, true);
+  }
 
   getData(){
     return this.result;
