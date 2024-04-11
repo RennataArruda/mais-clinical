@@ -7,55 +7,55 @@
   width: 5rem;
   height: 100vh;
   box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
-
-  .logo-container {
-    display: flex;
-    align-items: center;
-    padding: 0.938rem 0.938rem 0 0.938rem;
-    width: 100%;
-
-    .logo {
-      background: #fff;
-      text-align: center;
-      width: 3rem;
-      min-width: 3rem;
-      border-radius: 0.613rem;
-      padding: 0.113rem;
-      font-size: 10px;
-      cursor: pointer;
-      border: none;
-
-      .logo-img {
-        width: 100%;
-      }
-    }
-
-    .logo-text {
-      margin-left: 1.5rem;
-      font-size: 24px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .btn-close {
-      margin-left: auto;
-      cursor: pointer;
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      background-color: transparent;
-      border: none;
-
-      .mat-icon {
-        color: #fff;
-        font-size: 24px;
-      }
-    }
-  }
 }
 
 .sidenav-collapsed {
   width: 16.5625rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  padding: 0.938rem 0.938rem 0 0.938rem;
+  width: 100%;
+}
+
+.logo {
+  background: #fff;
+  text-align: center;
+  width: 3rem;
+  min-width: 3rem;
+  border-radius: 0.613rem;
+  padding: 0.113rem;
+  font-size: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.logo-img {
+  width: 100%;
+}
+
+.logo-text {
+  margin-left: 1.5rem;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.btn-close {
+  margin-left: auto;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+}
+
+.mat-icon {
+  color: #fff;
+  font-size: 24px;
 }
 
 .sidenav-nav {
@@ -67,47 +67,41 @@
   align-items: center;
   height: calc(100% - 3.65rem);
   cursor: pointer;
-
-  .sidenav-nav-item {
-    width: 100%;
-    margin-bottom: 0.625rem;
-
-    .sidenav-nav-link {
-      display: flex;
-      align-items: center;
-      height: 3rem;
-      color: #f3f3f3;
-      text-decoration: none;
-      border-radius: 0.625rem;
-      transition: all .3s ease;
-
-      .sidenav-link-icon {
-        font-size: 22px;
-        width: 2rem;
-        min-width: 2rem;
-        margin: 0 0.5rem;
-        text-align: center;
-      }
-
-      .sidenav-link-text {
-        margin-left: 1.5rem;
-      }
-    }
-  }
-
-  .sidenav-nav-item:hover {
-    .sidenav-nav-link {
-      background-color: #fff;
-      color: #355838;
-    }
-  }
 }
 
-.active {
-  background-color: #fff;
+.sidenav-nav-item {
+  width: 100%;
+  margin-bottom: 0.625rem;
+}
 
-  .sidenav-link-icon,
-  .sidenav-link-text {
-    color: #355838;
-  }
+.sidenav-nav-link {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  color: #f3f3f3;
+  text-decoration: none;
+  border-radius: 0.625rem;
+  transition: all .3s ease;
+}
+
+.sidenav-link-icon {
+  font-size: 22px;
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 0.5rem;
+  text-align: center;
+}
+
+.sidenav-link-text {
+  margin-left: 1.5rem;
+}
+
+.sidenav-nav-item:hover .sidenav-nav-link {
+  background-color: #fff;
+  color: #355838;
+}
+
+/* Estilos para o botão de logout */
+.sidenav-nav-item-logout {
+  margin-top: auto; /* Alinha o botão de logout no rodapé da barra lateral */
 }
