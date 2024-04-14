@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, of} from "rxjs";
+import {CommonUrl} from "./common-url";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PacienteResourceService {
 
-  commonUrl = 'https://x8ki-letl-twmt.n7.xano.io/api:WwQP6b4e/paciente';
+  commonUrl = CommonUrl + '/paciente';
 
 
   constructor(private http: HttpClient) { }

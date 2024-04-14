@@ -1,0 +1,66 @@
+<div mat-dialog-title>
+  <div fxLayout="column" class="w-100" fxLayoutAlign="start center" style="padding-bottom: 10px">
+    <div fxLayout="row" class="w-100" fxLayoutAlign="start center" style="padding-bottom: 5px">
+      <mat-icon class="mat-icon-md color-primary">personal_injury</mat-icon>
+      <h2 class="color-primary">Paciente</h2>
+    </div>
+    <mat-divider class="w-100"></mat-divider>
+  </div>
+</div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="mat-typography">
+    <div style="padding: 10px;">
+        <div fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between center" fxLayoutGap="1">
+          <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
+            <mat-label class="color-primary">CPF</mat-label>
+            <input matInput formControlName="cpf">
+          </mat-form-field>
+          <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
+            <mat-label class="color-primary">Nome Completo</mat-label>
+            <input matInput formControlName="nome_completo">
+          </mat-form-field>
+
+          <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
+            <mat-label class="color-primary">Endereço</mat-label>
+            <input matInput formControlName="endereco">
+          </mat-form-field>
+          <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
+            <mat-label class="color-primary">Celular</mat-label>
+            <input matInput formControlName="celular">
+          </mat-form-field>
+          <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
+            <mat-label class="color-primary">Contato Adicional</mat-label>
+            <input matInput formControlName="contato_adicional">
+          </mat-form-field>
+          <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
+            <mat-label class="color-primary">E-mail</mat-label>
+            <input matInput formControlName="email" type="email">
+          </mat-form-field>
+          <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
+            <mat-label class="color-primary">CNS</mat-label>
+            <input matInput formControlName="cns">
+          </mat-form-field>
+          <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
+            <mat-label class="color-primary">Número Carteira</mat-label>
+            <input matInput formControlName="numero_carteira">
+          </mat-form-field>
+          <select-convenio fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" label="Convênio"
+                           [form]="form" [property]="'descricao_convenio'"
+                           [inputValue]="form.get('descricao_convenio')?.value">
+          </select-convenio>
+
+          <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
+            <mat-label class="color-primary">Data de Nascimento</mat-label>
+            <input matInput formControlName="data_nascimento" type="date">
+          </mat-form-field>
+        </div>
+
+
+
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayoutAlign="start center" class="w-100">
+    <button mat-raised-button type="submit" color="primary">Confirmar</button>
+    <a mat-raised-button color="warn" (click)="onClose()">Cancelar</a>
+  </mat-dialog-actions>
+</form>

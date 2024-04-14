@@ -1,0 +1,18 @@
+@import "../../../../../style/theme/variables";
+
+.btn-item {
+  width: 100%;
+  border: 1px solid $color-primaria;
+  border-radius: 15px;
+  min-height: 50px;
+  margin: 2px 5px;
+}
+
+.btn-item-indisponivel {
+  background-color: #F4F4F4
+}
+
+.btn-item-selecionado {
+  background-color: $color-primaria;
+  color: white;
+}
