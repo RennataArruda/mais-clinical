@@ -17,6 +17,8 @@ import {AlterarSenhaComponent} from "./usuario/alterar-senha/alterar-senha.compo
 import {ConfirmDialogComponent} from "../../component/dialogs/confirm/confirm-dialog.component";
 import {PacienteComponent} from "./paciente/paciente.component";
 import {AddEditPacienteComponent} from "./paciente/add-edit-paciente/add-edit-paciente.component";
+import {MedicoComponent} from "./medico/medico.component";
+import {AddEditMedicoComponent} from "./medico/add-edit-medico/add-edit-medico.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
 import {DataFormatPipe} from "../../services/utils/data-format.pipe";
@@ -58,6 +60,9 @@ import {SelectConvenioComponent} from "../../component/select-convenio/select-co
     AgendarConsultaComponent,
     HorariosMedicoComponent,
     SelectConvenioComponent
+    PacienteComponent,
+    MedicoComponent,
+    AddEditMedicoComponent,
   ],
   declarations: [
     SidenavComponent,
@@ -71,6 +76,9 @@ import {SelectConvenioComponent} from "../../component/select-convenio/select-co
     AgendarConsultaComponent,
     HorariosMedicoComponent,
     SelectConvenioComponent
+    AddEditPacienteComponent,
+    MedicoComponent,
+    AddEditMedicoComponent,
   ],
   bootstrap: [
     SidenavComponent,
