@@ -2,3 +2,4 @@
 <app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth" *ngIf="pegeActive === 1"></app-body>
 <app-usuario [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth" *ngIf="pegeActive === 2 && !!isRoot"></app-usuario>
 <app-paciente [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth" *ngIf="pegeActive === 3"></app-paciente>
+<app-medico [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth" *ngIf="pegeActive === 4"></app-medico>

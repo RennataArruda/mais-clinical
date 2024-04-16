@@ -10,19 +10,19 @@ export const navData: SideNavInterface[] = [
     icon: 'manage_accounts',
     name: 'Usuário',
     position: 2,
-    viewOnlyRoot: true
+    viewOnlyRoot: true //Campo Indicando se será visivel apenas para o root/administrador
   },
   {
     icon: 'personal_injury',
     name: 'Paciente',
     position: 3,
-    viewOnlyRoot: true
+    viewOnlyRoot: false
   },
   {
     icon: 'medical_services',
     name: 'Médicos',
     position: 4,
-    viewOnlyRoot: true
+    viewOnlyRoot: false
   }
 ];
 

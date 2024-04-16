@@ -1,11 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {UsuarioResourceService} from "../../../resources/usuario-resource.service";
 import {ToastrService} from "ngx-toastr";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
-import {MedicoResourceService} from "../../../resources/medico-resource.service";
 import {first} from "rxjs";
-import {MedicoInterface} from "../../../interfaces/medico.interface";
+import {MedicoResourceService} from "../../../../resources/medico-resource.service";
+import {MedicoInterface} from "../../../../interfaces/medico.interface";
 
 @Component({
   selector: 'app-add-edit-medico',

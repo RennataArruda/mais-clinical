@@ -17,14 +17,15 @@ import {AlterarSenhaComponent} from "./usuario/alterar-senha/alterar-senha.compo
 import {ConfirmDialogComponent} from "../../component/dialogs/confirm/confirm-dialog.component";
 import {PacienteComponent} from "./paciente/paciente.component";
 import {AddEditPacienteComponent} from "./paciente/add-edit-paciente/add-edit-paciente.component";
-import {MedicoComponent} from "./medico/medico.component";
-import {AddEditMedicoComponent} from "./medico/add-edit-medico/add-edit-medico.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
 import {DataFormatPipe} from "../../services/utils/data-format.pipe";
 import {AgendarConsultaComponent} from "./body/agenda-consulta/agendar-consulta.component";
 import {HorariosMedicoComponent} from "./body/agenda-consulta/horarios-medico/horarios-medico.component";
 import {SelectConvenioComponent} from "../../component/select-convenio/select-convenio.component";
+import {AutocompleteMedicoModule} from "../../component/autocomplete-medico/autocomplete-medico.module";
+import {MedicoComponent} from "./medico/medico.component";
+import {AddEditMedicoComponent} from "./medico/add-edit-medico/add-edit-medico.component";
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import {SelectConvenioComponent} from "../../component/select-convenio/select-co
     MatDividerModule,
     MatDatepickerModule,
     MatSelectModule,
-    DataFormatPipe
+    DataFormatPipe,
+    AutocompleteMedicoModule
   ],
   exports: [
     MatCardModule,
@@ -59,7 +61,7 @@ import {SelectConvenioComponent} from "../../component/select-convenio/select-co
     PacienteComponent,
     AgendarConsultaComponent,
     HorariosMedicoComponent,
-    SelectConvenioComponent
+    SelectConvenioComponent,
     PacienteComponent,
     MedicoComponent,
     AddEditMedicoComponent,
@@ -75,7 +77,7 @@ import {SelectConvenioComponent} from "../../component/select-convenio/select-co
     AddEditPacienteComponent,
     AgendarConsultaComponent,
     HorariosMedicoComponent,
-    SelectConvenioComponent
+    SelectConvenioComponent,
     AddEditPacienteComponent,
     MedicoComponent,
     AddEditMedicoComponent,

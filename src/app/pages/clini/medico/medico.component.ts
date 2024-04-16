@@ -1,15 +1,12 @@
 import {Component, Input, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
-import {UsuarioResourceService} from "../../resources/usuario-resource.service";
-import {AuthService} from "../../services/auth/auth.service";
 import {ToastrService} from "ngx-toastr";
 import {MatDialog} from "@angular/material/dialog";
 import { MedicoResourceService } from 'src/app/resources/medico-resource.service';
 import {MatTableDataSource} from "@angular/material/table";
-import {AddEditUsuarioComponent} from "../usuario/add-edit-usuario/add-edit-usuario.component";
-import {ConfirmDialogComponent} from "../../component/dialogs/confirm/confirm-dialog.component";
 import {AddEditMedicoComponent} from "./add-edit-medico/add-edit-medico.component";
 import {first} from "rxjs";
+import {AuthService} from "../../../services/auth/auth.service";
 
 @Component({
   selector: 'app-medico',
@@ -31,7 +28,7 @@ export class MedicoComponent {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["id", "cpf_cnpj", "nome_medico", "visualizar", "editar", "apagar"];
+  displayedColumns: string[] = ["cpf_cnpj", "nome_medico", "dataNascimento", "visualizar", "editar", "apagar"];
 
   constructor(private resource: MedicoResourceService,
               private attAuth: AuthService,
