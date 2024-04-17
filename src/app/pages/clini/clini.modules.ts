@@ -23,7 +23,6 @@ import {DataFormatPipe} from "../../services/utils/data-format.pipe";
 import {AgendarConsultaComponent} from "./body/agenda-consulta/agendar-consulta.component";
 import {HorariosMedicoComponent} from "./body/agenda-consulta/horarios-medico/horarios-medico.component";
 import {SelectConvenioComponent} from "../../component/select-convenio/select-convenio.component";
-import {AutocompleteMedicoModule} from "../../component/autocomplete-medico/autocomplete-medico.module";
 import {MedicoComponent} from "./medico/medico.component";
 import {AddEditMedicoComponent} from "./medico/add-edit-medico/add-edit-medico.component";
 
@@ -42,8 +41,8 @@ import {AddEditMedicoComponent} from "./medico/add-edit-medico/add-edit-medico.c
     MatDatepickerModule,
     MatSelectModule,
     DataFormatPipe,
-    AutocompleteMedicoModule
   ],
+
   exports: [
     MatCardModule,
     MaterialModule,

@@ -28,7 +28,7 @@ export class MedicoComponent {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["cpf_cnpj", "nome_medico", "dataNascimento", "visualizar", "editar", "apagar"];
+  displayedColumns: string[] = [ "id", "codigo", "cpf_cnpj", "nome_medico", "visualizar", "editar"];
 
   constructor(private resource: MedicoResourceService,
               private attAuth: AuthService,
@@ -80,10 +80,6 @@ export class MedicoComponent {
     this.openModal(item, 'Editar Medico',  AddEditMedicoComponent);
   }
 
-  onDelete(item: any){
-    this.delete(item)
-  }
-
   getBodyClass(): string {
     let styleClass = '';
     if(this.collapsed && this.screenWidth > 768) {
@@ -118,27 +114,4 @@ export class MedicoComponent {
       this.dataPagination.paginator.firstPage();
     }
   }
-
-  delete(model: any) {
-    // Verifica se o ID do paciente está definido e é válido
-    if (model.id) {
-      this.resource.delete(model.id).pipe(first()).subscribe(res => {
-        if (res) {
-          this.toastr.success('Medico deletado com sucesso', 'Sucesso!');
-          // Execute qualquer outra lógica necessária após a exclusão do paciente
-        }
-      }, error => {
-        // Exibe o erro no console
-        console.log(error);
-        // Trate o erro conforme necessário, como exibir uma mensagem de erro para o usuário
-        this.toastr.error('Erro ao deletar médico', 'Erro!');
-      });
-    } else {
-      console.error('O ID do médico não está definido ou é inválido.');
-      // Trate esse caso conforme necessário, como exibindo uma mensagem de erro para o usuário.
-    }
   }
-
-
-
-}

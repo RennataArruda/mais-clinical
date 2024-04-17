@@ -1,5 +1,6 @@
 export interface MedicoInterface {
   id: number,
+  codigo: string,
   cpf: string,
   nome: string,
   crm: string,

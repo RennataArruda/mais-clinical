@@ -35,6 +35,7 @@ export class AddEditMedicoComponent implements OnInit {
     this.service.get(item.id).subscribe(item => {
       this.editdata = item;
       this.form.get('id')?.setValue(this.editdata.id);
+      this.form.get('codigo')?.setValue(this.editdata.codigo);
       this.form.get('email')?.setValue(this.editdata.email);
       this.form.get('cpf')?.setValue(this.editdata.cpf);
       this.form.get('nome')?.setValue(this.editdata.nome);
@@ -51,6 +52,7 @@ export class AddEditMedicoComponent implements OnInit {
 
     form = this.builder.group({
       id: this.builder.control(''),
+      codigo: this.builder.control(''),
       email: this.builder.control(''),
       cpf: this.builder.control(''),
       nome: this.builder.control(''),
@@ -80,6 +82,7 @@ export class AddEditMedicoComponent implements OnInit {
     if (!!model && model.id) {
       const _model = {
         id: model.id,
+        codigo: model.codigo,
         nome_completo: model.nome,
         email: model.email,
         cpf: model.cpf,
@@ -111,7 +114,7 @@ export class AddEditMedicoComponent implements OnInit {
       if (!!error.error && !!error.error.message && error.error.message === 'Duplicate record detected. Please check your input and try again.')
         this.toastr.error('Email já cadastrado', 'Opa!');
       else
-        this.toastr.error('Erro ao atualizar Paciente', 'Opa!');
+        this.toastr.error('Erro ao atualizar o Médico', 'Opa!');
     });
   }
 
@@ -121,7 +124,7 @@ export class AddEditMedicoComponent implements OnInit {
     if (model.id) {
       this.resource.update(model, model.id).pipe(first()).subscribe(res => {
         if (res){
-          this.toastr.success('Paciente atualizado com sucesso', 'Sucesso!');
+          this.toastr.success('Médico atualizado com sucesso', 'Sucesso!');
           this.ref.close(model);
         }
       }, error => {

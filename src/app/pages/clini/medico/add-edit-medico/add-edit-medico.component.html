@@ -12,19 +12,39 @@
         <div class="form-fields" fxLayout="row wrap" fxLayoutAlign="start center">
           <!-- Campos adicionais -->
           <mat-form-field fxFlex="50" color="primary">
-            <mat-label class="color-primary">CPF</mat-label>
+            <mat-label class="color-primary">Código</mat-label>
+            <input matInput formControlName="codigo">
+          </mat-form-field>
+          <mat-form-field fxFlex="50" color="primary">
+            <mat-label class="color-primary">CPF/CNPJ</mat-label>
             <input matInput formControlName="cpf">
           </mat-form-field>
           <mat-form-field fxFlex="50" color="primary">
             <mat-label class="color-primary">Nome Completo</mat-label>
-            <input matInput formControlName="nome_completo">
+            <input matInput formControlName="nome">
           </mat-form-field>
-        </div>
 
+        </div>
         <div class="form-fields" fxLayout="row wrap" fxLayoutAlign="start center">
           <mat-form-field fxFlex="50" color="primary">
-            <mat-label class="color-primary">Endereço</mat-label>
-            <input matInput formControlName="endereco">
+            <mat-label class="color-primary">CRM</mat-label>
+            <input matInput formControlName="crm">
+          </mat-form-field>
+          <mat-form-field fxFlex="50" color="primary">
+            <mat-label class="color-primary">Conselho</mat-label>
+            <input matInput formControlName="conselho">
+          </mat-form-field>
+          <mat-form-field fxFlex="50" color="primary">
+            <mat-label class="color-primary">UF Conselho</mat-label>
+            <input matInput formControlName="uf_conselho">
+          </mat-form-field>
+          <mat-form-field fxFlex="50" color="primary">
+            <mat-label class="color-primary">Especialidade</mat-label>
+            <input matInput formControlName="especialidade">
+          </mat-form-field>
+          <mat-form-field fxFlex="50" color="primary">
+            <mat-label class="color-primary">Data de Cadastro</mat-label>
+            <input matInput formControlName="data_cadastro" type="date">
           </mat-form-field>
           <mat-form-field fxFlex="50" color="primary">
             <mat-label class="color-primary">Celular</mat-label>
@@ -38,30 +58,6 @@
             <mat-label class="color-primary">E-mail</mat-label>
             <input matInput formControlName="email" type="email">
           </mat-form-field>
-          <mat-form-field fxFlex="50" color="primary">
-            <mat-label class="color-primary">CNS</mat-label>
-            <input matInput formControlName="cns">
-          </mat-form-field>
-          <mat-form-field fxFlex="50" color="primary">
-            <mat-label class="color-primary">Número Carteira</mat-label>
-            <input matInput formControlName="numero_carteira">
-          </mat-form-field>
-          <!-- Novos campos adicionados -->
-          <mat-form-field fxFlex="50" color="primary">
-            <mat-label class="color-primary">Convênio</mat-label>
-            <mat-select formControlName="convenio">
-              <mat-option [value]="true">Sim</mat-option>
-              <mat-option [value]="false">Não</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field fxFlex="50" color="primary">
-            <mat-label class="color-primary">ID do Convênio</mat-label>
-            <input matInput formControlName="convenio_id" type="number">
-          </mat-form-field>
-          <mat-form-field fxFlex="50" color="primary">
-            <mat-label class="color-primary">Data de Nascimento</mat-label>
-            <input matInput formControlName="data_nascimento" type="date">
-          </mat-form-field>
         </div>
       </div>
     </div>
@@ -70,7 +66,4 @@
       <a mat-raised-button color="warn" (click)="onClose()">Cancelar</a>
     </div>
   </form>
-
-
-
 </div>
