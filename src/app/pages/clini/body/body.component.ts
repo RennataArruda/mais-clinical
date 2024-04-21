@@ -1,6 +1,5 @@
 import {Component, Input} from "@angular/core";
 import {MatDialog} from "@angular/material/dialog";
-import {AddEditUsuarioComponent} from "../usuario/add-edit-usuario/add-edit-usuario.component";
 import {AgendarConsultaComponent} from "./agenda-consulta/agendar-consulta.component";
 
 @Component({
@@ -28,7 +27,8 @@ export class BodyComponent {
 
   openModal( title: any,component:any) {
     var _popup = this.dialog.open(component, {
-      width: '100%',
+      maxWidth: '100vw',
+      width: '80%',
       enterAnimationDuration: '1000ms',
       exitAnimationDuration: '1000ms',
       data: {

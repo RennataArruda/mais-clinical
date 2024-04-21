@@ -29,6 +29,8 @@
     "@angular/compiler-cli": "^16.1.0",
     "@angular/flex-layout": "^15.0.0-beta.42",
     "@angular/material": "^16.2.14",
+    "@angular/material-experimental": "^16.2.14",
+    "@angular/material-moment-adapter": "^16.2.14",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.6.0",
     "json-server": "^1.0.0-alpha.23",

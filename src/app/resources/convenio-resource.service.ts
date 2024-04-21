@@ -6,7 +6,7 @@ import {Observable, of} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class PacienteResourceService {
+export class ConvenioResourceService {
 
   commonUrl = CommonUrl + '/convenio';
 

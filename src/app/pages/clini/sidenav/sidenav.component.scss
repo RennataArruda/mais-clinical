@@ -98,7 +98,11 @@
 
 .sidenav-nav-item:hover .sidenav-nav-link {
   background-color: #fff;
-  color: #355838;
+  color: #355838 !important;
+}
+
+.sidenav-nav-item:hover .sidenav-nav-link .sidenav-link-icon{
+  color: #355838 !important;
 }
 
 /* Estilos para o botão de logout */

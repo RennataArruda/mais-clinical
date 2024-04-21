@@ -7,6 +7,23 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
+import {MomentDateAdapter} from "@angular/material-moment-adapter";
+
+
+export const DATE_FORMAT = {
+  parse: {
+    dateInput: 'LL'
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'YYYY'
+  }
+};
 
 @NgModule({
   imports: [
@@ -18,7 +35,10 @@ import {MatIconModule} from "@angular/material/icon";
     MatMenuModule,
     MatProgressSpinnerModule,
     MatAutocompleteModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     FormsModule,
@@ -28,7 +48,15 @@ import {MatIconModule} from "@angular/material/icon";
     ReactiveFormsModule,
     MatMenuModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
+  providers: [
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT }
   ]
 })
 export class MaterialModule { }

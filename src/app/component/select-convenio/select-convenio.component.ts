@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {PacienteResourceService} from "../../resources/convenio-resource.service";
+import {ConvenioResourceService} from "../../resources/convenio-resource.service";
 import {FormGroup} from "@angular/forms";
 
 @Component({
@@ -20,8 +20,6 @@ export class SelectConvenioComponent implements OnInit {
 
   value: any;
 
-  _value: any;
-
   @Input()
   label: string = '';
 
@@ -33,7 +31,7 @@ export class SelectConvenioComponent implements OnInit {
   @Input()
   property: string = '';
 
-  constructor(private service: PacienteResourceService) {
+  constructor(private service: ConvenioResourceService) {
   }
 
   ngOnInit() {
@@ -43,7 +41,6 @@ export class SelectConvenioComponent implements OnInit {
   }
 
   attValue(event: any) {
-    console.log(event)
     this.form.get(this.property)?.setValue(event.value);
     this.form.get(this.property)?.updateValueAndValidity();
   }

@@ -1,5 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import {DatePipe} from "@angular/common";
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   standalone: true,

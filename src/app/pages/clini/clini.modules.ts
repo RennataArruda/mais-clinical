@@ -25,6 +25,8 @@ import {HorariosMedicoComponent} from "./body/agenda-consulta/horarios-medico/ho
 import {SelectConvenioComponent} from "../../component/select-convenio/select-convenio.component";
 import {MedicoComponent} from "./medico/medico.component";
 import {AddEditMedicoComponent} from "./medico/add-edit-medico/add-edit-medico.component";
+import {AutocompleteMedicoModule} from "../../component/autocomplete-medico/autocomplete-medico.module";
+import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/autocomplete-paciente.module";
 
 @NgModule({
   imports: [
@@ -41,6 +43,8 @@ import {AddEditMedicoComponent} from "./medico/add-edit-medico/add-edit-medico.c
     MatDatepickerModule,
     MatSelectModule,
     DataFormatPipe,
+    AutocompleteMedicoModule,
+    AutocompletePacienteModule
   ],
 
   exports: [

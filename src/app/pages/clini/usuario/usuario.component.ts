@@ -73,7 +73,6 @@ export class UsuarioComponent implements OnInit, OnDestroy {
       }
     });
     _popup.afterClosed().subscribe(item => {
-      console.log(item)
       this.search();
     })
   }

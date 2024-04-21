@@ -1,18 +1,36 @@
-import {Component, EventEmitter, Output} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {DataHorario} from "./data-horario";
 import {ToastrService} from "ngx-toastr";
+import {Observable, Subject} from "rxjs";
 
 @Component({
   selector: 'horarios-medico',
   templateUrl: './horarios-medico.component.html',
   styleUrls: ['./horarios-medico.component.scss']
 })
-export class HorariosMedicoComponent {
+export class HorariosMedicoComponent implements OnInit {
   horarios = DataHorario;
+
+
+  horariosMedico$: Subject<string[]> = new Subject<string[]>();
 
   @Output()
   horarioSelecionado: EventEmitter<any> = new EventEmitter<any>();
   constructor(private alerta: ToastrService) {
+  }
+
+  ngOnInit() {
+    this.horariosMedico$.subscribe(horarios => {
+      if (horarios && horarios.length > 0) {
+        horarios.forEach(h => {
+          const horario = this.horarios.find(hh => hh.hora === h);
+          if (horario) {
+            horario.disponivel = false;
+            horario.selecionado = false;
+          }
+        });
+      }
+    });
   }
 
   selecionarHorario(horario: any) {
@@ -30,8 +48,11 @@ export class HorariosMedicoComponent {
       this.horarioSelecionado.emit(horario);
     else
       this.horarioSelecionado.emit(null);
+  }
 
-    console.log(this.horarios);
+  @Input()
+  set horariosMedico(value: string[]) {
+    this.horariosMedico$.next(value);
   }
 
 }
