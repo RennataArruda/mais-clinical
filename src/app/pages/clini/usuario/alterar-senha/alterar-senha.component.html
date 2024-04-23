@@ -12,11 +12,6 @@
     <div style="padding: 10px;">
         <div fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between center" fxLayoutGap="1">
           <mat-form-field fxFlex="100" color="primary" *ngIf="!form?.get('id')?.value">
-            <mat-label class="color-primary">Senha Atual</mat-label>
-            <input matInput formControlName="oldSenha" type="password" [required]="true" [minLength]="8">
-            <mat-error *ngIf="invalidForm" class="error">{{'Campo Obrigatório'}}</mat-error>
-          </mat-form-field>
-          <mat-form-field fxFlex="100" color="primary" *ngIf="!form?.get('id')?.value">
             <mat-label class="color-primary">Nova Senha</mat-label>
             <input matInput formControlName="newSenha" type="password" [required]="true" [minLength]="8">
             <mat-error *ngIf="invalidForm" class="error">{{'Campo Obrigatório'}}</mat-error>
