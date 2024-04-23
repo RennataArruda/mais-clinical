@@ -16,6 +16,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {HttpClientModule} from "@angular/common/http";
 import {ToastrModule} from "ngx-toastr";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MaterialModule} from "./material.module";
 
 
 @NgModule({
@@ -38,8 +39,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatDialogModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    FlexLayoutModule
-
+    FlexLayoutModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

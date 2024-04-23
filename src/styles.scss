@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import './app/style/theme/theme';
-
+@import './app/style/theme/variables';
 
 @font-face {
   font-family: 'Material Icons';
@@ -90,6 +90,10 @@ body {
   color: #355838;
 }
 
+.text-center {
+  text-align: center;
+}
+
 
 .mat-icon-md {
   font-size: 30px;
@@ -103,4 +107,11 @@ body {
   height: 35px !important;
   width: 35px !important;
   margin-right: 6px;
+}
+
+@media (max-width: $sm) {
+  .cdk-overlay-pane {
+    width: 100% !important;
+  }
+
 }

@@ -1,0 +1,11 @@
+<div fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between center" fxLayoutGap="1">
+  <ng-container *ngFor="let item of horarios">
+    <div fxFlex="24.5" fxLayoutAlign="space-between center" >
+      <a (click)="selecionarHorario(item)"
+         [ngClass]="item.selecionado ? 'btn-item-selecionado' : !item.disponivel ? 'btn-item-indisponivel' : ''"
+         class="btn-item" fxLayoutAlign="center center">
+        <span class="text-center">{{item.hora}}</span>
+      </a>
+    </div>
+  </ng-container>
+</div>

@@ -12,10 +12,7 @@ import {Router} from "@angular/router";
 export class AppComponent implements OnInit {
   title = 'mais-clinical';
 
-  constructor(private auth: AuthService,
-              private http: HttpClient,
-              private router: Router,
-              private authResource: AuthResourceService){
+  constructor(private auth: AuthService){
     inject(AuthService);
     inject(HttpClient)
   }
