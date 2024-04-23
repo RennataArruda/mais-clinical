@@ -31,7 +31,7 @@ export class PacienteComponent {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["cpf", "nome_completo", "dataNascimento", "visualizar", "editar", "apagar"];
+  displayedColumns: string[] = ["ativo","cpf", "nome_completo", "dataNascimento", "visualizar", "editar", "inativar"];
 
   constructor(private resource: PacienteResourceService,
               private attAuth: AuthService,
@@ -83,8 +83,33 @@ export class PacienteComponent {
     this.openModal(item, 'Editar Paciente', AddEditPacienteComponent);
   }
 
-  onDelete(item: any){
-    this.delete(item)
+  openConfirm(model: any, message: string ,component:any) {
+    var _popup = this.dialog.open(component, {
+      width: '30%',
+      enterAnimationDuration: '1000ms',
+      exitAnimationDuration: '1000ms',
+      data: {
+        message: message
+      }
+    });
+    _popup.afterClosed().subscribe(item => {
+      if (item) {
+        const _model = {
+          ativo : !model.ativo
+        }
+        this.resource.ativarOrNot(_model, model.id).subscribe(response => {
+          this.toastr.success('Operação realizada com sucesso!', 'Sucesso!');
+          this.search();
+        }, error => {
+          this.toastr.error(error.error.message || 'Erro ao processar a requisição', 'Opa!');
+        });
+      }
+    })
+  }
+
+  inativar(item: any){
+    const message = item.ativo ? 'Deseja realmente inativar o paciente?' : 'Deseja realmente ativar o paciente?';
+    this.openConfirm(item, message, ConfirmDialogComponent);
   }
 
   getBodyClass(): string {
@@ -121,27 +146,5 @@ export class PacienteComponent {
       this.dataPagination.paginator.firstPage();
     }
   }
-
-  delete(model: any) {
-    // Verifica se o ID do paciente está definido e é válido
-    if (model.id) {
-      this.resource.delete(model.id).pipe(first()).subscribe(res => {
-        if (res) {
-          this.toastr.success('Paciente deletado com sucesso', 'Sucesso!');
-          // Execute qualquer outra lógica necessária após a exclusão do paciente
-        }
-      }, error => {
-        // Exibe o erro no console
-        console.log(error);
-        // Trate o erro conforme necessário, como exibir uma mensagem de erro para o usuário
-        this.toastr.error('Erro ao deletar paciente', 'Erro!');
-      });
-    } else {
-      console.error('O ID do paciente não está definido ou é inválido.');
-      // Trate esse caso conforme necessário, como exibindo uma mensagem de erro para o usuário.
-    }
-  }
-
-
 
 }

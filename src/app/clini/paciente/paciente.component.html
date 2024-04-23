@@ -29,6 +29,14 @@
     <div *ngIf="dataPagination" class="w-100">
     <table mat-table [dataSource]="dataPagination" class="w-100">
 
+      <ng-container matColumnDef="ativo">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon *ngIf="element.ativo" color="primary">check_circle</mat-icon>
+          <mat-icon *ngIf="!element.ativo" color="warn">block</mat-icon>
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="cpf">
         <th mat-header-cell *matHeaderCellDef> CPF </th>
         <td mat-cell *matCellDef="let element"> {{element.cpf}} </td>
@@ -64,12 +72,12 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="apagar">
+      <ng-container matColumnDef="inativar">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="primary" [matTooltip]="'Apagar Paciente'"
-                  (click)="onDelete(element)">
-            <mat-icon>delete</mat-icon>
+          <button mat-icon-button color="primary" [matTooltip]="'Inativar/Ativar Usuário'"
+                  (click)="inativar(element)">
+            <mat-icon>lock</mat-icon>
           </button>
         </td>
       </ng-container>

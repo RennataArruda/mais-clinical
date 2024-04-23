@@ -47,6 +47,16 @@ export class PacienteResourceService {
     });
   }
 
+  ativarOrNot(paciente: any, idPaciente: number): Observable<any> {
+    const token = sessionStorage.getItem('token') ?? '';
+    if (!token) {return of({});}
+    return this.http.put<any>(`${this.commonUrl}/${idPaciente}/inativar-ativar`, paciente, {
+      headers: {
+        Authorization: token ? `${token}` : '',
+      }
+    });
+  }
+
   update(paciente: any, idPaciente: number): Observable<any> {
     const token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of({});}
@@ -56,19 +66,5 @@ export class PacienteResourceService {
       }
     });
   }
-
-  delete(idPaciente: number): Observable<any> {
-    const token = sessionStorage.getItem('token') ?? '';
-    if (!token) {
-      return of({});
-    }
-
-    return this.http.delete<any>(`${this.commonUrl}/${idPaciente}`, {
-      headers: {
-        Authorization: token ? `${token}` : '',
-      }
-    });
-  }
-
 
 }
