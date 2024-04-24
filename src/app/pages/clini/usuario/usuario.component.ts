@@ -121,7 +121,6 @@ export class UsuarioComponent implements OnInit, OnDestroy {
   }
 
   onPaginateChange(event: any) {
-    console.log(event);
     const pageSize = 5;
     const startIndex = event.pageIndex * pageSize;
     const endIndex = startIndex + pageSize;

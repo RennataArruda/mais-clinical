@@ -59,8 +59,8 @@
 
     </div>
   </mat-dialog-content>
-  <mat-dialog-actions fxLayoutAlign="start center" class="w-100">
-    <button mat-raised-button type="submit" color="primary">Confirmar</button>
-    <a mat-raised-button color="warn" (click)="onClose()">Cancelar</a>
+  <mat-dialog-actions fxLayoutAlign="end center" class="w-100">
+    <button mat-raised-button type="submit" color="primary" *ngIf="!inputdata?.view">Confirmar</button>
+    <a mat-raised-button color="warn" (click)="onClose()">{{ inputdata?.view ? 'Fechar' : 'Cancelar' }}</a>
   </mat-dialog-actions>
 </form>
