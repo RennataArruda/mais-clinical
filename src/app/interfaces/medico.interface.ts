@@ -7,8 +7,8 @@ export interface MedicoInterface {
   conselho: string,
   uf_conselho: string,
   especialidade: string,
-  data_cadastro: string,
-  celular: string,
+  created_at: string,
+  telefone: string,
   contato_adicional: string,
   email: string,
 }

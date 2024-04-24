@@ -29,11 +29,6 @@
     <div *ngIf="dataPagination" class="w-100">
     <table mat-table [dataSource]="dataPagination" class="w-100">
 
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-      </ng-container>
-
       <ng-container matColumnDef="codigo">
         <th mat-header-cell *matHeaderCellDef> Código </th>
         <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
