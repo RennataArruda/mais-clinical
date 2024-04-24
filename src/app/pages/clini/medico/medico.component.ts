@@ -28,7 +28,7 @@ export class MedicoComponent {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = [ "id", "codigo", "cpf_cnpj", "nome_medico", "visualizar", "editar"];
+  displayedColumns: string[] = [ "codigo", "cpf_cnpj", "nome_medico", "visualizar", "editar"];
 
   constructor(private resource: MedicoResourceService,
               private attAuth: AuthService,
