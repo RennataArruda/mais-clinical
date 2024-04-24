@@ -108,10 +108,16 @@
 
     </table>
 
-    <mat-paginator class="w-100" [hidePageSize]="true"
-                   [showFirstLastButtons]="true"
-                   [pageSizeOptions]="[5]" aria-label="Select page of dataPagination">
-    </mat-paginator>
+<!--    <mat-paginator class="w-100" [hidePageSize]="true"  [length]="totalRecords"-->
+<!--                   [showFirstLastButtons]="true"-->
+<!--                   [pageSizeOptions]="[5]">-->
+<!--    </mat-paginator>-->
+
+      <mat-paginator class="w-100" [hidePageSize]="true"  [pageSizeOptions]="[5]"
+                     [length]="totalRecords"
+                     (page)="onPaginateChange($event)"
+                     [pageSize]="pageSize"
+                     [showFirstLastButtons]="true"></mat-paginator>
 
   </div>
   </div>
