@@ -28,7 +28,7 @@ export class PacienteComponent {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["cpf", "nome_completo", "dataNascimento", "visualizar", "editar", "apagar"];
+  displayedColumns: string[] = ["cpf", "nome_completo", "dataNascimento", "visualizar", "editar"];
 
   constructor(private resource: PacienteResourceService,
               private attAuth: AuthService,
@@ -95,17 +95,26 @@ export class PacienteComponent {
 
   search(){
     this.resource.search().subscribe(response => {
-      // Exibe o objeto retornado no console
-      console.log(response);
 
       this.result = response.sort((a, b) => a.id - b.id);
-      this.dataPagination = new MatTableDataSource(this.getData());
-      this.totalRecords = this.dataPagination.data.length;
-      this.dataPagination.paginator = this.paginator;
+      this.totalRecords = this.result.length;
+      this.onPaginateChange({pageIndex: 0, pageSize: this.pageSize})
     }, error => {
       this.toastr.error(error, 'Opa!');
       console.log(this.getData())
     });
+  }
+
+  onPaginateChange(event: any) {
+    const pageSize = 5;
+    const startIndex = event.pageIndex * pageSize;
+    const endIndex = startIndex + pageSize;
+
+    if (startIndex >= this.getData().length) {
+      this.dataPagination = new MatTableDataSource([]);
+    }
+
+    this.dataPagination = new MatTableDataSource(this.getData().slice(startIndex, endIndex));
   }
 
 
