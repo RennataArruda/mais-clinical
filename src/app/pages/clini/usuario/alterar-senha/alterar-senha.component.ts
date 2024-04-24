@@ -38,7 +38,6 @@ export class AlterarSenhaComponent implements OnInit {
   }
 
   form = this.builder.group({
-    oldSenha: this.builder.control('', Validators.compose([Validators.required])),
     newSenha: this.builder.control('', Validators.compose([Validators.required])),
   });
 
@@ -50,12 +49,8 @@ export class AlterarSenhaComponent implements OnInit {
 
       setTimeout(() => {this.invalidForm = false}, 2000);
     } else {
-      if (model.newSenha === model.oldSenha){
-        this.toastr.error('A nova senha não pode ser igual a senha atual', 'Senha inválida!');
-        return;
-      }
       if (!!model && this.verificarSenha(model.newSenha)){
-        this.toastr.error('A senha deve conter ao menos 8 caracteres, letras, números e ao menos um caracter especial', 'Senha inválida!');
+        this.toastr.error('A senha deve conter ao menos 10 caracteres, letras, números e ao menos um caracter especial', 'Senha inválida!');
         return;
       }
 

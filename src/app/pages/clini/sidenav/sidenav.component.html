@@ -18,6 +18,12 @@
       </a>
     </li>
     <li class="sidenav-nav-item sidenav-nav-item-logout">
+      <a class="sidenav-nav-link" (click)="alterarSenha()">
+        <mat-icon class="sidenav-link-icon">key</mat-icon>
+        <span class="sidenav-link-text size-2 bold" @fadeInOut *ngIf="collapsed">Logout</span>
+      </a>
+    </li>
+    <li class="sidenav-nav-item sidenav-nav-item-logout" style="margin-top: 0;">
       <a class="sidenav-nav-link" (click)="logout()">
         <mat-icon class="sidenav-link-icon">power_settings_new</mat-icon>
         <span class="sidenav-link-text size-2 bold" @fadeInOut *ngIf="collapsed">Logout</span>
