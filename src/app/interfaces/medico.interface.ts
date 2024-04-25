@@ -7,7 +7,6 @@ export interface MedicoInterface {
   conselho: string,
   uf_conselho: string,
   especialidade: string,
-  created_at: string,
   telefone: string,
   contato_adicional: string,
   email: string,

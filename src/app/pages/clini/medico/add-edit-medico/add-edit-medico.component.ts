@@ -46,7 +46,6 @@ export class AddEditMedicoComponent implements OnInit {
       this.form.get('conselho')?.setValue(this.editdata.conselho);
       this.form.get('uf_conselho')?.setValue(this.editdata.uf_conselho);
       this.form.get('especialidade')?.setValue(this.editdata.especialidade);
-      this.form.get('created_at')?.setValue(this.editdata.created_at);
     });
   }
 
@@ -63,9 +62,7 @@ export class AddEditMedicoComponent implements OnInit {
       conselho: this.builder.control(''),
       uf_conselho: this.builder.control(''),
       especialidade: this.builder.control(''),
-      created_at: this.builder.control('')
   });
-
 
   onClose() {
     this.ref.close(false);
@@ -93,7 +90,6 @@ export class AddEditMedicoComponent implements OnInit {
         conselho: model.conselho,
         uf_conselho: model.uf_conselho,
         especialidade: model.especialidade,
-        data_cadastro: model.created_at
       };
       this.update(_model);
     } else {

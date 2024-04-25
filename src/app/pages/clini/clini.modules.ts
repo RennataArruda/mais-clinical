@@ -44,7 +44,8 @@ import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/
     MatSelectModule,
     DataFormatPipe,
     AutocompleteMedicoModule,
-    AutocompletePacienteModule
+    AutocompletePacienteModule,
+
   ],
 
   exports: [
