@@ -20,11 +20,14 @@
             </mat-form-field>
             <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
               <mat-label class="color-primary">CPF/CNPJ</mat-label>
-              <input matInput formControlName="cpf" [mask]="cpfCnpjLenght > 11 ? cnpjMask : cpfMask" maxlength="18">
+              <input matInput formControlName="cpf" [mask]="cpfCnpjLenght > 11 ? cnpjMask : cpfMask" maxlength="18"
+              [required]="true" [minLength]="3">
+            <mat-error *ngIf="invalidForm" class="error" >{{'Campo Obrigatório'}}</mat-error>
             </mat-form-field>
             <mat-form-field fxFlex="100" color="primary">
               <mat-label class="color-primary">Nome Completo</mat-label>
-              <input matInput formControlName="nome">
+              <input matInput formControlName="nome" [required]="true" [minLength]="3">
+            <mat-error *ngIf="invalidForm" class="error" >{{'Campo Obrigatório'}}</mat-error>
             </mat-form-field>
 
           </div>
@@ -47,7 +50,8 @@
             </mat-form-field>
             <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
               <mat-label class="color-primary">Celular</mat-label>
-              <input matInput formControlName="telefone">
+              <input matInput formControlName="telefone" [required]="true" [minLength]="3">
+            <mat-error *ngIf="invalidForm" class="error" >{{'Campo Obrigatório'}}</mat-error>
             </mat-form-field>
             <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
               <mat-label class="color-primary">Contato Adicional</mat-label>
