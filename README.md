@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
 
+## Instruções gerais para rodar o front-end
+
+- Clonar o repositório na máquina;
+- Certificar-se que possui o nodejs instalado;
+- Rodar o comando "npm i";
+- Rodar o comando "ng serve" para compilar os arquivos;
+- Acessar a aplicação pela porta disponibilizada.
+
+
 ## Dependencias
 Caso necessário adicionar uma nova dependencia instalar com o comando
 `npm install --save -dev nome_da_dependencia` assim será adicionado ao package do projeto.
