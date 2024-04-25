@@ -17,6 +17,9 @@ export class AddEditMedicoComponent implements OnInit {
   inputdata: any;
   editdata: any;
 
+  cpfMask = '000.000.000-00';
+  cnpjMask = '00.000.000/0000-00';
+
   constructor(private resource: MedicoResourceService,
               private toastr: ToastrService,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -136,6 +139,10 @@ export class AddEditMedicoComponent implements OnInit {
       console.error('O ID do modelo não está definido ou é inválido.');
       // Trate esse caso conforme necessário, como exibindo uma mensagem de erro para o usuário.
     }
+  }
+
+  get cpfCnpjLenght(){
+    return this.form.get('cpf')?.value?.length || 0;
   }
 
 }

@@ -27,6 +27,8 @@ import {MedicoComponent} from "./medico/medico.component";
 import {AddEditMedicoComponent} from "./medico/add-edit-medico/add-edit-medico.component";
 import {AutocompleteMedicoModule} from "../../component/autocomplete-medico/autocomplete-medico.module";
 import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/autocomplete-paciente.module";
+import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
+import {CpfCnpjMaskPipe} from "../../component/pipe/pipeCpfCnpj";
 
 @NgModule({
   imports: [
@@ -45,9 +47,9 @@ import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/
     DataFormatPipe,
     AutocompleteMedicoModule,
     AutocompletePacienteModule,
-
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
-
   exports: [
     MatCardModule,
     MaterialModule,
@@ -85,6 +87,7 @@ import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/
     AddEditPacienteComponent,
     MedicoComponent,
     AddEditMedicoComponent,
+    CpfCnpjMaskPipe
   ],
   bootstrap: [
     SidenavComponent,
@@ -94,6 +97,9 @@ import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/
     AlterarSenhaComponent,
     ConfirmDialogComponent,
     AgendarConsultaComponent
+  ],
+  providers: [
+    provideNgxMask()
   ]
 })
 export class CliniModules { }
