@@ -15,7 +15,7 @@
   <mat-nav-list>
     <ng-container *ngFor="let item of dataPagination">
       <mat-list-item (click)="onSelectItem(item)">
-        {{item.codigo + ' - ' + item.nome}}
+        {{(item.cpf | cpfCnpjMask) + ' - ' + item.nome_completo}}
       </mat-list-item>
     </ng-container>
 

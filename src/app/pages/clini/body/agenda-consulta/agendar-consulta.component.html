@@ -7,22 +7,27 @@
     <mat-divider class="w-100"></mat-divider>
   </div>
 </div>
-<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-dialog-content class="mat-typography">
     <div style="padding: 10px;">
       <div class="w-100" fxLayout="column" fxLayoutAlign="center center">
         <div fxFlex="100" class="w-100">
           <div fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between center" fxLayoutGap="1">
-            <mat-form-field fxFlex="34.5" fxFlex.sm="34.5" fxFlex.xs="100" color="primary">
+            <mat-form-field fxFlex="24.5" fxFlex.sm="29.5" fxFlex.xs="100" color="primary">
               <mat-label class="color-primary">Data da Consulta</mat-label>
-              <input matInput formControlName="data_consulta" [matDatepicker]="picker">
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+              <input matInput formControlName="data_consulta" type="date">
             </mat-form-field>
 
-            <div fxFlex="64.5" fxFlex.sm="64.5" fxFlex.xs="100">
+            <div fxFlex="59.5" fxFlex.sm="50.5" fxFlex.xs="69.5">
               <app-autocomplete-medico class="w-100" label="Médico" [required]="true"
                                        [form]="form" property="medico"></app-autocomplete-medico>
+            </div>
+
+            <div fxFlex="17.5" fxFlex.sm="18.5" fxFlex.xs="20.5" fxLayoutAlign="center center">
+              <a class="btn-circle" [matTooltip]="'Pesquisar Horários'" *ngIf="searchButton"
+                 (click)="searchHorariosMedico()" mat-raised-button color="primary">
+                <mat-icon style="margin-right: 0; margin-left: 0;">search</mat-icon>
+              </a>
             </div>
           </div>
         </div>
@@ -47,8 +52,6 @@
           </div>
         </div>
       </div>
-
-      <pre>{{horarioSelecionado | json}}</pre>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions fxLayoutAlign="end center" class="w-100">

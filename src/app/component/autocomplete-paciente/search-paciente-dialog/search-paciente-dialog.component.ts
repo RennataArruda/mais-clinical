@@ -5,11 +5,12 @@ import {FormBuilder} from "@angular/forms";
 import {MedicoResourceService} from "../../../resources/medico-resource.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {finalize} from "rxjs/operators";
+import {PacienteResourceService} from "../../../resources/paciente-resource.service";
 
 @Component({
   selector: 'app-search-paciente-dialog',
   templateUrl: './search-paciente-dialog.component.html',
-  styleUrls: ['./search-paciente-dialog.component.scss']
+  styleUrls: ['./search-paciente-dialog.component.scss'],
 })
 export class SearchPacienteDialogComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined = undefined;
@@ -19,7 +20,7 @@ export class SearchPacienteDialogComponent implements OnInit {
   totalRecords: number = 0;
   loading : boolean = false;
   constructor(
-    private resource: MedicoResourceService,
+    private resource: PacienteResourceService,
     private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private ref: MatDialogRef<SearchPacienteDialogComponent>,
