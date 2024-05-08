@@ -7,6 +7,7 @@ import {PacienteResourceService} from "../../../resources/paciente-resource.serv
 import {MatTableDataSource} from "@angular/material/table";
 import {AddEditPacienteComponent} from "./add-edit-paciente/add-edit-paciente.component";
 import {first} from "rxjs";
+import {ConfirmDialogComponent} from "../../../component/dialogs/confirm/confirm-dialog.component";
 
 @Component({
   selector: 'app-paciente',
@@ -28,7 +29,7 @@ export class PacienteComponent {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["ativo","cpf", "nome_completo", "dataNascimento", "visualizar", "editar", "inativar"];
+  displayedColumns: string[] = ["cpf", "nome_completo", "dataNascimento", "visualizar", "editar"];
 
   constructor(private resource: PacienteResourceService,
               private attAuth: AuthService,
