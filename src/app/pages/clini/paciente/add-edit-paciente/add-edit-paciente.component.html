@@ -13,7 +13,7 @@
         <div fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between center" fxLayoutGap="1">
           <mat-form-field fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" color="primary">
             <mat-label class="color-primary">CPF</mat-label>
-            <input matInput formControlName="cpf" [mask]="cpfCnpjLenght > 11 ? cnpjMask : cpfMask" maxlength="11"
+            <input matInput formControlName="cpf" [mask]="cpfCnpjLenght > 11 ? cnpjMask : cpfMask" maxlength="18"
               [required]="true" [minLength]="3">
             <mat-error *ngIf="invalidForm" class="error" >{{'Campo Obrigatório'}}</mat-error>
           </mat-form-field>

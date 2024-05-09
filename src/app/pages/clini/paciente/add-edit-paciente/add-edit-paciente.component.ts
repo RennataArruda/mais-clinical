@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {ToastrService} from "ngx-toastr";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {PacienteResourceService} from "../../../../resources/paciente-resource.service";
 import {first} from "rxjs";
 import {PacienteInterface} from "../../../../interfaces/paciente.interface";
@@ -16,6 +16,7 @@ export class AddEditPacienteComponent implements OnInit {
   invalidForm: boolean = false;
   inputdata: any;
   editdata: any;
+
   cpfMask = '000.000.000-00';
   cnpjMask = '00.000.000/0000-00';
 
