@@ -16,6 +16,8 @@ export class AddEditPacienteComponent implements OnInit {
   invalidForm: boolean = false;
   inputdata: any;
   editdata: any;
+  cpfMask = '000.000.000-00';
+  cnpjMask = '00.000.000/0000-00';
 
   constructor(private resource: PacienteResourceService,
               private toastr: ToastrService,
@@ -126,7 +128,7 @@ export class AddEditPacienteComponent implements OnInit {
         }
       }, error => {
         // Exibe o erro no console
-        console.log(error);
+        // console.log(error);
 
         if (!!error.message && error.message === 'Duplicate record detected. Please check your input and try again.')
           this.toastr.error('Email já cadastrado', 'Opa!');
@@ -134,9 +136,13 @@ export class AddEditPacienteComponent implements OnInit {
           this.toastr.error('Erro ao atualizar usuário', 'Opa!');
       });
     } else {
-      console.error('O ID do modelo não está definido ou é inválido.');
+      // console.error('O ID do modelo não está definido ou é inválido.');
       // Trate esse caso conforme necessário, como exibindo uma mensagem de erro para o usuário.
     }
+  }
+
+  get cpfCnpjLenght(){
+    return this.form.get('cpf')?.value?.length || 0;
   }
 
 }

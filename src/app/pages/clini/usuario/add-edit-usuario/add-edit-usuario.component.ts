@@ -72,7 +72,7 @@ export class AddEditUsuarioComponent implements OnInit {
       setTimeout(() => {this.invalidForm = false}, 2000);
     } else {
       if (!!model && !model.id && this.verificarSenha(model.password)){
-        this.toastr.error('A senha deve conter ao menos 8 caracteres, letras, números e ao menos um caracter especial', 'Senha inválida!');
+        this.toastr.error('A senha deve conter ao menos 10 caracteres, letras, números e ao menos um caracter especial', 'Senha inválida!');
         return;
       }
       if (!!model && model.id){

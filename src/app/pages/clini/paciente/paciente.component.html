@@ -30,8 +30,8 @@
     <table mat-table [dataSource]="dataPagination" class="w-100">
 
       <ng-container matColumnDef="cpf">
-        <th mat-header-cell *matHeaderCellDef> CPF </th>
-        <td mat-cell *matCellDef="let element"> {{element.cpf}} </td>
+        <th mat-header-cell *matHeaderCellDef> CPF/CNPJ </th>
+        <td mat-cell *matCellDef="let element"> {{element.cpf | cpfCnpjMask}} </td>
       </ng-container>
 
       <ng-container matColumnDef="nome_completo">
@@ -64,6 +64,18 @@
         </td>
       </ng-container>
 
+<<<<<<< HEAD
+=======
+<!--      <ng-container matColumnDef="apagar">-->
+<!--        <th mat-header-cell *matHeaderCellDef></th>-->
+<!--        <td mat-cell *matCellDef="let element">-->
+<!--          <button mat-icon-button color="primary" [matTooltip]="'Apagar Paciente'"-->
+<!--                  (click)="onDelete(element)">-->
+<!--            <mat-icon>delete</mat-icon>-->
+<!--          </button>-->
+<!--        </td>-->
+<!--      </ng-container>-->
+>>>>>>> debe01177c993e69a015acc0431cb2231a76af0c
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -74,10 +86,11 @@
 
     </table>
 
-    <mat-paginator class="w-100" [hidePageSize]="true"
-                   [showFirstLastButtons]="true"
-                   [pageSizeOptions]="[5]" aria-label="Select page of dataPagination">
-    </mat-paginator>
+    <mat-paginator class="w-100" [hidePageSize]="true"  [pageSizeOptions]="[5]"
+                   [length]="totalRecords"
+                   (page)="onPaginateChange($event)"
+                   [pageSize]="pageSize"
+                   [showFirstLastButtons]="true"></mat-paginator>
 
   </div>
   </div>

@@ -17,6 +17,9 @@ export class AddEditMedicoComponent implements OnInit {
   inputdata: any;
   editdata: any;
 
+  cpfMask = '000.000.000-00';
+  cnpjMask = '00.000.000/0000-00';
+
   constructor(private resource: MedicoResourceService,
               private toastr: ToastrService,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -40,32 +43,29 @@ export class AddEditMedicoComponent implements OnInit {
       this.form.get('cpf')?.setValue(this.editdata.cpf);
       this.form.get('nome')?.setValue(this.editdata.nome);
       this.form.get('endereco')?.setValue(this.editdata.endereco);
-      this.form.get('celular')?.setValue(this.editdata.celular);
+      this.form.get('telefone')?.setValue(this.editdata.telefone);
       this.form.get('contato_adicional')?.setValue(this.editdata.contato_adicional);
       this.form.get('crm')?.setValue(this.editdata.crm);
       this.form.get('conselho')?.setValue(this.editdata.conselho);
       this.form.get('uf_conselho')?.setValue(this.editdata.uf_conselho);
       this.form.get('especialidade')?.setValue(this.editdata.especialidade);
-      this.form.get('data_cadastro')?.setValue(this.editdata.data_cadastro);
     });
   }
 
     form = this.builder.group({
       id: this.builder.control(''),
       codigo: this.builder.control(''),
+      nome: this.builder.control(''),
       email: this.builder.control(''),
       cpf: this.builder.control(''),
-      nome: this.builder.control(''),
       endereco: this.builder.control(''),
-      celular: this.builder.control(''),
+      telefone: this.builder.control(''),
       contato_adicional: this.builder.control(''),
       crm: this.builder.control(''),
       conselho: this.builder.control(''),
       uf_conselho: this.builder.control(''),
       especialidade: this.builder.control(''),
-      data_cadastro: this.builder.control('')
   });
-
 
   onClose() {
     this.ref.close(false);
@@ -83,17 +83,16 @@ export class AddEditMedicoComponent implements OnInit {
       const _model = {
         id: model.id,
         codigo: model.codigo,
-        nome_completo: model.nome,
+        nome: model.nome,
         email: model.email,
         cpf: model.cpf,
         endereco: model.endereco,
-        celular: model.celular,
+        telefone: model.telefone,
         contato_adicional: model.contato_adicional,
         crm: model.crm,
         conselho: model.conselho,
         uf_conselho: model.uf_conselho,
         especialidade: model.especialidade,
-        data_cadastro: model.data_cadastro
       };
       this.update(_model);
     } else {
@@ -140,6 +139,10 @@ export class AddEditMedicoComponent implements OnInit {
       console.error('O ID do modelo não está definido ou é inválido.');
       // Trate esse caso conforme necessário, como exibindo uma mensagem de erro para o usuário.
     }
+  }
+
+  get cpfCnpjLenght(){
+    return this.form.get('cpf')?.value?.length || 0;
   }
 
 }

@@ -27,6 +27,8 @@ import {MedicoComponent} from "./medico/medico.component";
 import {AddEditMedicoComponent} from "./medico/add-edit-medico/add-edit-medico.component";
 import {AutocompleteMedicoModule} from "../../component/autocomplete-medico/autocomplete-medico.module";
 import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/autocomplete-paciente.module";
+import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
+import {CpfCnpjMaskPipe} from "../../component/pipe/pipeCpfCnpj";
 
 @NgModule({
   imports: [
@@ -44,30 +46,31 @@ import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/
     MatSelectModule,
     DataFormatPipe,
     AutocompleteMedicoModule,
-    AutocompletePacienteModule
+    AutocompletePacienteModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
-
   exports: [
-    MatCardModule,
-    MaterialModule,
-    CommonModule,
-    SidenavComponent,
-    BodyComponent,
-    UsuarioComponent,
-    MatTableModule,
-    FlexModule,
-    MatPaginatorModule,
-    MatDialogModule,
-    MatTooltipModule,
-    AddEditUsuarioComponent,
-    MatDividerModule,
-    PacienteComponent,
-    AgendarConsultaComponent,
-    HorariosMedicoComponent,
-    SelectConvenioComponent,
-    PacienteComponent,
-    MedicoComponent,
-    AddEditMedicoComponent,
+      MatCardModule,
+      MaterialModule,
+      CommonModule,
+      SidenavComponent,
+      BodyComponent,
+      UsuarioComponent,
+      MatTableModule,
+      FlexModule,
+      MatPaginatorModule,
+      MatDialogModule,
+      MatTooltipModule,
+      AddEditUsuarioComponent,
+      MatDividerModule,
+      PacienteComponent,
+      AgendarConsultaComponent,
+      HorariosMedicoComponent,
+      SelectConvenioComponent,
+      PacienteComponent,
+      MedicoComponent,
+      AddEditMedicoComponent
   ],
   declarations: [
     SidenavComponent,
@@ -83,7 +86,7 @@ import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/
     SelectConvenioComponent,
     AddEditPacienteComponent,
     MedicoComponent,
-    AddEditMedicoComponent,
+    AddEditMedicoComponent
   ],
   bootstrap: [
     SidenavComponent,
@@ -93,6 +96,9 @@ import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/
     AlterarSenhaComponent,
     ConfirmDialogComponent,
     AgendarConsultaComponent
+  ],
+  providers: [
+    provideNgxMask()
   ]
 })
 export class CliniModules { }

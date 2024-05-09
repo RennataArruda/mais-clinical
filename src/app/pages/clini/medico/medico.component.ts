@@ -11,7 +11,7 @@ import {AuthService} from "../../../services/auth/auth.service";
 @Component({
   selector: 'app-medico',
   templateUrl: './medico.component.html',
-  styleUrls: ['./medico.component.scss']
+  styleUrls: ['./medico.component.scss'],
 })
 export class MedicoComponent {
 
@@ -28,7 +28,7 @@ export class MedicoComponent {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = [ "id", "codigo", "cpf_cnpj", "nome_medico", "visualizar", "editar"];
+  displayedColumns: string[] = [ "codigo", "cpf_cnpj", "nome_medico", "visualizar", "editar"];
 
   constructor(private resource: MedicoResourceService,
               private attAuth: AuthService,

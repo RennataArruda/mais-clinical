@@ -21,6 +21,10 @@ export class HorariosMedicoComponent implements OnInit {
 
   ngOnInit() {
     this.horariosMedico$.subscribe(horarios => {
+      this.horarios.forEach(h => {
+        h.disponivel = true;
+        h.selecionado = false;
+      });
       if (horarios && horarios.length > 0) {
         horarios.forEach(h => {
           const horario = this.horarios.find(hh => hh.hora === h);
@@ -35,13 +39,16 @@ export class HorariosMedicoComponent implements OnInit {
 
   selecionarHorario(horario: any) {
     const subHorario = this.horarios.filter(h => h.hora !== horario.hora);
-    if (subHorario.filter(h => h.selecionado).length > 0) {
-      this.alerta.error('Já existe um horário selecionado ', 'Opa!');
-      return;
-    } else if (!horario.disponivel && !horario.selecionado) {
+    if (!horario.disponivel && !horario.selecionado) {
       this.alerta.error('Horário indisponível', 'Opa!');
       return;
+    } else if (subHorario.filter(h => h.selecionado).length > 0) {
+      subHorario.forEach(h => {
+        h.disponivel = true;
+        h.selecionado = false;
+      });
     }
+
     horario.disponivel = !horario.disponivel;
     horario.selecionado = !horario.selecionado;
     if (!!horario.selecionado)

@@ -18,7 +18,6 @@ import {ToastrModule} from "ngx-toastr";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MaterialModule} from "./material.module";
 
-
 @NgModule({
   declarations: [
     AppComponent

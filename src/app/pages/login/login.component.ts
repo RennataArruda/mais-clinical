@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
           });
         }
       }, error => {
-        this.toastr.error('Credenciais Inválidas', 'Opa!');
+        this.toastr.error('Usuário e/ou senha incorretos.', 'Opa!');
         this.loading = false; // Desativar o spinner
 
       });

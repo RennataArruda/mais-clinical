@@ -45,7 +45,7 @@ export class AutocompletePacienteComponent implements OnInit {
 
   attValue(event: any) {
     this.value = event;
-    this.valueString = event && event.id ? event.nome : '';
+    this.valueString = event && event.id ? event.nome_completo : '';
     this.form.get(this.property)?.setValue(event);
     this.form.get(this.property)?.updateValueAndValidity();
   }
