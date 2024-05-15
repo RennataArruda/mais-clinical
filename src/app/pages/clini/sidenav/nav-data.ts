@@ -23,6 +23,12 @@ export const navData: SideNavInterface[] = [
     name: 'Médicos',
     position: 4,
     viewOnlyRoot: false
+  },
+  {
+    icon: 'medical_information',
+    name: 'Consultas',
+    position: 5,
+    viewOnlyRoot: false
   }
 ];
 
