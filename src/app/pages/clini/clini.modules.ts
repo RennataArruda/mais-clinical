@@ -16,6 +16,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import {AlterarSenhaComponent} from "./usuario/alterar-senha/alterar-senha.component";
 import {ConfirmDialogComponent} from "../../component/dialogs/confirm/confirm-dialog.component";
 import {PacienteComponent} from "./paciente/paciente.component";
+import {ConsultaComponent} from "./consulta/consulta.component";
 import {AddEditPacienteComponent} from "./paciente/add-edit-paciente/add-edit-paciente.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
@@ -27,6 +28,7 @@ import {MedicoComponent} from "./medico/medico.component";
 import {AddEditMedicoComponent} from "./medico/add-edit-medico/add-edit-medico.component";
 import {AutocompleteMedicoModule} from "../../component/autocomplete-medico/autocomplete-medico.module";
 import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/autocomplete-paciente.module";
+import {AutocompleteConsultaModule} from "../../component/autocomplete-consulta/autocomplete-consulta.module";
 import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
 import {CpfCnpjMaskPipe} from "../../component/pipe/pipeCpfCnpj";
 
@@ -47,6 +49,7 @@ import {CpfCnpjMaskPipe} from "../../component/pipe/pipeCpfCnpj";
     DataFormatPipe,
     AutocompleteMedicoModule,
     AutocompletePacienteModule,
+    AutocompleteConsultaModule,
     NgxMaskDirective,
     NgxMaskPipe
   ],
