@@ -1,19 +1,20 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {AuthService} from "../../../services/auth/auth.service";
 import {ToastrService} from "ngx-toastr";
 import {MatDialog} from "@angular/material/dialog";
 import {ConsultaResourceService} from "../../../resources/consulta-resource.service";
 import {MatTableDataSource} from "@angular/material/table";
-import {AddEditConsultaComponent} from "./add-edit-consulta/add-edit-consulta.component";
 import {first} from 'rxjs';
+import {FormBuilder} from "@angular/forms";
+import {AgendarConsultaComponent} from "./agenda-consulta/agendar-consulta.component";
 
 @Component({
   selector: 'app-consulta',
   templateUrl: './consulta.component.html',
   styleUrls: ['./consulta.component.scss']
 })
-export class ConsultaComponent {
+export class ConsultaComponent implements OnInit, OnDestroy {
 
   result: any[] = [];
 
@@ -33,10 +34,16 @@ export class ConsultaComponent {
   constructor(private resource: ConsultaResourceService,
               private attAuth: AuthService,
               private toastr: ToastrService,
+              private builder: FormBuilder,
               private dialog: MatDialog,
   ) {
   }
 
+  form = this.builder.group({
+    data_consulta: this.builder.control(''),
+    medico: this.builder.control(''),
+    paciente: this.builder.control(''),
+  });
 
   ngOnInit() {
     this.attAuth.validarUsuario();
@@ -45,52 +52,42 @@ export class ConsultaComponent {
 
   ngOnDestroy() {}
 
-  openModal(code: any, title: any,component:any, view?: boolean) {
-    var _popup = this.dialog.open(component, {
-      enterAnimationDuration: '1000ms',
-      exitAnimationDuration: '1000ms',
-      data: {
-        title: title,
-        code: code,
-        view: view,
-      }
-    });
-
-    _popup.afterClosed().subscribe(item => {
-      console.log(item)
-      this.search();
-    })
-  }
-
 
   onView(item: any) {
-    this.openModal(item, 'Visualizar Paciente', AddEditConsultaComponent, true);
+    // this.openModal(item, 'Visualizar Paciente', AddEditConsultaComponent, true);
   }
 
   getData(){
     return this.result;
   }
 
-  onAdd(){
-    this.openModal({}, 'Adicionar Paciente', AddEditConsultaComponent);
-  }
-
   onEdit(item: any){
-    this.openModal(item, 'Editar Paciente', AddEditConsultaComponent);
+    // this.openModal(item, 'Editar Paciente', AddEditConsultaComponent);
   }
 
   onDelete(item: any){
     this.delete(item)
   }
 
-  getBodyClass(): string {
-    let styleClass = '';
-    if(this.collapsed && this.screenWidth > 768) {
-      styleClass = 'body-trimmed';
-    } else if(this.collapsed && this.screenWidth <= 768 && this.screenWidth > 0) {
-      styleClass = 'body-md-screen'
-    }
-    return styleClass;
+  openModal( title: any,component:any) {
+    var _popup = this.dialog.open(component, {
+      maxWidth: '100vw',
+      width: '80%',
+      enterAnimationDuration: '1000ms',
+      exitAnimationDuration: '1000ms',
+      data: {
+        title: title,
+      }
+    });
+    _popup.afterClosed().subscribe(item => {})
+  }
+
+  onAdd(){
+    this.openModal( 'Marcar Consulta', AgendarConsultaComponent);
+  }
+
+  consultar(){
+
   }
 
   search(){
@@ -148,5 +145,14 @@ export class ConsultaComponent {
   }
 
 
+  getBodyClass(): string {
+    let styleClass = '';
+    if(this.collapsed && this.screenWidth > 768) {
+      styleClass = 'body-trimmed';
+    } else if(this.collapsed && this.screenWidth <= 768 && this.screenWidth > 0) {
+      styleClass = 'body-md-screen'
+    }
+    return styleClass;
+  }
 
 }

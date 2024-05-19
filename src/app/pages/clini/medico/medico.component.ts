@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {ToastrService} from "ngx-toastr";
 import {MatDialog} from "@angular/material/dialog";
@@ -13,7 +13,7 @@ import {AuthService} from "../../../services/auth/auth.service";
   templateUrl: './medico.component.html',
   styleUrls: ['./medico.component.scss'],
 })
-export class MedicoComponent {
+export class MedicoComponent implements OnInit, OnDestroy {
 
   result: any[] = [];
 

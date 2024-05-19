@@ -1,6 +1,5 @@
 import {Component, Input} from "@angular/core";
 import {MatDialog} from "@angular/material/dialog";
-import {AgendarConsultaComponent} from "./agenda-consulta/agendar-consulta.component";
 
 @Component({
   selector: 'app-body',
@@ -23,22 +22,5 @@ export class BodyComponent {
       styleClass = 'body-md-screen'
     }
     return styleClass;
-  }
-
-  openModal( title: any,component:any) {
-    var _popup = this.dialog.open(component, {
-      maxWidth: '100vw',
-      width: '80%',
-      enterAnimationDuration: '1000ms',
-      exitAnimationDuration: '1000ms',
-      data: {
-        title: title,
-      }
-    });
-    _popup.afterClosed().subscribe(item => {})
-  }
-
-  open(){
-    this.openModal( 'Marcar Consulta', AgendarConsultaComponent);
   }
 }

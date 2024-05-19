@@ -8,7 +8,7 @@ import {CommonUrl} from "./common-url";
 })
 export class ConsultaResourceService {
 
-  commonUrl = CommonUrl + '/paciente';
+  commonUrl = CommonUrl + '/consultas';
 
 
   constructor(private http: HttpClient) { }
@@ -25,46 +25,46 @@ export class ConsultaResourceService {
     });
   }
 
-  create(paciente: any): Observable<any>{
+  create(consulta: any): Observable<any>{
     let token: string;
 
     // @ts-ignore
     token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of({});}
-    return this.http.post<any>(this.commonUrl, paciente,{
+    return this.http.post<any>(this.commonUrl, consulta,{
       headers: {
         Authorization: token ? `${token}` : '',
       }
     });
   }
 
-  get(idPaciente: number): Observable<any> {
+  get(id: number): Observable<any> {
     const token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of({});}
-    return this.http.get<any>(`${this.commonUrl}/${idPaciente}`, {
+    return this.http.get<any>(`${this.commonUrl}/${id}`, {
       headers: {
         Authorization: token ? `${token}` : '',
       }
     });
   }
 
-  update(paciente: any, idPaciente: number): Observable<any> {
+  update(consulta: any, id: number): Observable<any> {
     const token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of({});}
-    return this.http.patch<any>(`${this.commonUrl}/${idPaciente}`, paciente, {
+    return this.http.patch<any>(`${this.commonUrl}/${id}`, consulta, {
       headers: {
         Authorization: token ? `${token}` : '',
       }
     });
   }
 
-  delete(idPaciente: number): Observable<any> {
+  delete(id: number): Observable<any> {
     const token = sessionStorage.getItem('token') ?? '';
     if (!token) {
       return of({});
     }
 
-    return this.http.delete<any>(`${this.commonUrl}/${idPaciente}`, {
+    return this.http.delete<any>(`${this.commonUrl}/${id}`, {
       headers: {
         Authorization: token ? `${token}` : '',
       }
