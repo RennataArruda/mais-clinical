@@ -24,7 +24,7 @@
             </div>
 
             <div fxFlex="14.5" fxFlex.sm="18.5" fxFlex.xs="20.5" fxLayoutAlign="center center">
-              <a class="btn-circle" [matTooltip]="'Pesquisar Horários'" [disabled]="searchButton"
+              <a class="btn-circle" [matTooltip]="'Pesquisar Horários'" [disabled]="!searchButton"
                  (click)="searchHorariosMedico()" mat-raised-button color="primary">
                 <mat-icon style="margin-right: 0; margin-left: 0;">search</mat-icon>
               </a>
