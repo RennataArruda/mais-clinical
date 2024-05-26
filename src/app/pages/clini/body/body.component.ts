@@ -1,17 +1,28 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {MatDialog} from "@angular/material/dialog";
+import {TotalizadoresResourceService} from "../../../resources/totalizadores-resource.service";
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.scss']
 })
-export class BodyComponent {
+export class BodyComponent implements OnInit {
 
   @Input() collapsed = false;
   @Input() screenWidth = 0;
 
-  constructor(private dialog: MatDialog) {
+  consultasDia = 0;
+
+  constructor(private dialog: MatDialog,
+              private totalizadoresService: TotalizadoresResourceService) {
+  }
+
+  ngOnInit() {
+
+    this.totalizadoresService.totalConsultasDia().subscribe((response) => {
+      this.consultasDia = response;
+    });
   }
 
   getBodyClass(): string {

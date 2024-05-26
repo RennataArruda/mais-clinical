@@ -1,3 +1,17 @@
-<div class="body" [ngClass]="getBodyClass()">
-  <h1>Bem Vindo</h1>
+<div class="body" [ngClass]="getBodyClass()" >
+  <div style="width: 80%; margin: auto;" fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between center" fxLayoutGap="1">
+
+
+    <div fxFlex="32.5" fxFlex.sm="100" fxFlex.xs="100" fxLayoutAlign="center center">
+      <mat-card class="w-100 card-total" fxLayout="row">
+        <div fxFlex="79.5" fxLayout="column" class="w-100" fxLayoutAlign="center center">
+          <h4>Consultas Para Hoje</h4>
+          <h1>{{consultasDia}}</h1>
+        </div>
+        <div fxFlex="19.5" fxLayout="column" class="w-100" fxLayoutAlign="center center">
+          <mat-icon class="mat-icon-lg">event</mat-icon>
+        </div>
+      </mat-card>
+    </div>
+  </div>
 </div>
