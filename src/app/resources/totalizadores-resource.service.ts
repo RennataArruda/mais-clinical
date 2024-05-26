@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {Observable, of} from "rxjs";
-import {DatePipe} from "@angular/common";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable, of } from "rxjs";
+import { DatePipe } from "@angular/common";
 
 @Injectable({
   providedIn: 'root',
@@ -12,14 +12,12 @@ export class TotalizadoresResourceService {
 
   constructor(private http: HttpClient, private datePipe: DatePipe) { }
 
-
   totalClientes(): Observable<number> {
     let token: string;
     // @ts-ignore
-
     token = sessionStorage.getItem('token') ?? '';
-    if (!token) {return of(0);}
-    return this.http.post<number>(`${this.commonUrl}/clientes`, {},{
+    if (!token) { return of(0); }
+    return this.http.post<number>(`${this.commonUrl}/clientes`, {}, {
       headers: {
         Authorization: token ? `${token}` : '',
       }
@@ -29,9 +27,8 @@ export class TotalizadoresResourceService {
   totalPrestadores(): Observable<number> {
     let token: string;
     // @ts-ignore
-
     token = sessionStorage.getItem('token') ?? '';
-    if (!token) {return of(0);}
+    if (!token) { return of(0); }
     return this.http.post<number>(`${this.commonUrl}/prestadores`, {}, {
       headers: {
         Authorization: token ? `${token}` : '',
@@ -42,11 +39,10 @@ export class TotalizadoresResourceService {
   totalConsultasDia(): Observable<number> {
     let token: string;
     // @ts-ignore
-
     token = sessionStorage.getItem('token') ?? '';
-    if (!token) {return of(0);}
+    if (!token) { return of(0); }
     const dataSearch = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
-    return this.http.post<number>(`${this.commonUrl}/consultas_hoje`, {data_atual: dataSearch}, {
+    return this.http.post<number>(`${this.commonUrl}/consultas_hoje`, { data_atual: dataSearch }, {
       headers: {
         Authorization: token ? `${token}` : '',
       }
@@ -56,10 +52,8 @@ export class TotalizadoresResourceService {
   consultasCanceladas(): Observable<number> {
     let token: string;
     // @ts-ignore
-
     token = sessionStorage.getItem('token') ?? '';
-    if (!token) {return of(0);}
-
+    if (!token) { return of(0); }
     return this.http.post<number>(`${this.commonUrl}/consultas_canceladas`, {}, {
       headers: {
         Authorization: token ? `${token}` : '',
@@ -67,4 +61,3 @@ export class TotalizadoresResourceService {
     });
   }
 }
-

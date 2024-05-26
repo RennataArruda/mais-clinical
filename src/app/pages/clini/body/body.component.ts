@@ -13,15 +13,20 @@ export class BodyComponent implements OnInit {
   @Input() screenWidth = 0;
 
   consultasDia = 0;
+  consultasCanceladas = 0; // Nova propriedade para consultas canceladas
 
   constructor(private dialog: MatDialog,
               private totalizadoresService: TotalizadoresResourceService) {
   }
 
   ngOnInit() {
-
     this.totalizadoresService.totalConsultasDia().subscribe((response) => {
       this.consultasDia = response;
+    });
+
+    // Chamada para obter o total de consultas canceladas
+    this.totalizadoresService.consultasCanceladas().subscribe((response) => {
+      this.consultasCanceladas = response;
     });
   }
 
