@@ -29,7 +29,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["medico", "paciente", "dataAgendamento", "horario", "visualizar", "editar", "comprovante", "apagar"];
+  displayedColumns: string[] = ["medico", "paciente", "dataAgendamento", "horario", "visualizar", "editar", "comprovante"];
 
   constructor(private resource: ConsultaResourceService,
               private attAuth: AuthService,
@@ -66,10 +66,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     // this.openModal(item, 'Editar Paciente', AddEditConsultaComponent);
   }
 
-  onDelete(item: any){
-    this.delete(item)
-  }
-
   openModal( title: any,component:any) {
     var _popup = this.dialog.open(component, {
       maxWidth: '100vw',
@@ -96,7 +92,8 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
       this.result = response.sort((a, b) => a.id - b.id);
       this.totalRecords = this.result.length;
-      this.onPaginateChange({pageIndex: 0, pageSize: this.pageSize})
+      this.onPaginateChange({pageIndex: 0, pageSize: this.pageSize});
+      console.log(this.result);
     }, error => {
       this.toastr.error(error, 'Opa!');
       console.log(this.getData())
@@ -122,26 +119,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
     if (this.dataPagination.paginator) {
       this.dataPagination.paginator.firstPage();
-    }
-  }
-
-  delete(model: any) {
-    // Verifica se o ID do paciente está definido e é válido
-    if (model.id) {
-      this.resource.delete(model.id).pipe(first()).subscribe(res => {
-        if (res) {
-          this.toastr.success('Consulta deletada com sucesso', 'Sucesso!');
-          // Execute qualquer outra lógica necessária após a exclusão do paciente
-        }
-      }, error => {
-        // Exibe o erro no console
-        console.log(error);
-        // Trate o erro conforme necessário, como exibir uma mensagem de erro para o usuário
-        this.toastr.error('Erro ao deletar consulta', 'Erro!');
-      });
-    } else {
-      console.error('O ID da consulta não está definido ou é inválido.');
-      // Trate esse caso conforme necessário, como exibindo uma mensagem de erro para o usuário.
     }
   }
 

@@ -12,13 +12,14 @@ export class ConsultaResourceService {
 
 
   constructor(private http: HttpClient) { }
-  search(): Observable<any[]> {
+  search(search?: any): Observable<any[]> {
     let token: string;
     // @ts-ignore
 
     token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of([]);}
-    return this.http.get<any[]>(`${this.commonUrl}`, {
+    search = search ? search : {};
+    return this.http.post<any[]>(`${this.commonUrl}_search`, search,{
       headers: {
         Authorization: token ? `${token}` : '',
       }
