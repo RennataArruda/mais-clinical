@@ -1,18 +1,33 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {MatDialog} from "@angular/material/dialog";
-import {AgendarConsultaComponent} from "./agenda-consulta/agendar-consulta.component";
+import {TotalizadoresResourceService} from "../../../resources/totalizadores-resource.service";
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.scss']
 })
-export class BodyComponent {
+export class BodyComponent implements OnInit {
 
   @Input() collapsed = false;
   @Input() screenWidth = 0;
 
-  constructor(private dialog: MatDialog) {
+  consultasDia = 0;
+  consultasCanceladas = 0; // Nova propriedade para consultas canceladas
+
+  constructor(private dialog: MatDialog,
+              private totalizadoresService: TotalizadoresResourceService) {
+  }
+
+  ngOnInit() {
+    this.totalizadoresService.totalConsultasDia().subscribe((response) => {
+      this.consultasDia = response;
+    });
+
+    // Chamada para obter o total de consultas canceladas
+    this.totalizadoresService.consultasCanceladas().subscribe((response) => {
+      this.consultasCanceladas = response;
+    });
   }
 
   getBodyClass(): string {
@@ -23,22 +38,5 @@ export class BodyComponent {
       styleClass = 'body-md-screen'
     }
     return styleClass;
-  }
-
-  openModal( title: any,component:any) {
-    var _popup = this.dialog.open(component, {
-      maxWidth: '100vw',
-      width: '80%',
-      enterAnimationDuration: '1000ms',
-      exitAnimationDuration: '1000ms',
-      data: {
-        title: title,
-      }
-    });
-    _popup.afterClosed().subscribe(item => {})
-  }
-
-  open(){
-    this.openModal( 'Marcar Consulta', AgendarConsultaComponent);
   }
 }

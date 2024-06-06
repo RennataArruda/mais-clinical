@@ -21,8 +21,6 @@ import {AddEditPacienteComponent} from "./paciente/add-edit-paciente/add-edit-pa
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
 import {DataFormatPipe} from "../../services/utils/data-format.pipe";
-import {AgendarConsultaComponent} from "./body/agenda-consulta/agendar-consulta.component";
-import {HorariosMedicoComponent} from "./body/agenda-consulta/horarios-medico/horarios-medico.component";
 import {SelectConvenioComponent} from "../../component/select-convenio/select-convenio.component";
 import {MedicoComponent} from "./medico/medico.component";
 import {AddEditMedicoComponent} from "./medico/add-edit-medico/add-edit-medico.component";
@@ -30,7 +28,8 @@ import {AutocompleteMedicoModule} from "../../component/autocomplete-medico/auto
 import {AutocompletePacienteModule} from "../../component/autocomplete-paciente/autocomplete-paciente.module";
 import {AutocompleteConsultaModule} from "../../component/autocomplete-consulta/autocomplete-consulta.module";
 import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
-import {CpfCnpjMaskPipe} from "../../component/pipe/pipeCpfCnpj";
+import {AgendarConsultaComponent} from "./consulta/agenda-consulta/agendar-consulta.component";
+import {HorariosMedicoComponent} from "./consulta/agenda-consulta/horarios-medico/horarios-medico.component";
 
 @NgModule({
   imports: [

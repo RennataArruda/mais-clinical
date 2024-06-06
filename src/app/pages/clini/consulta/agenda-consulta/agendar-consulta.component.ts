@@ -8,6 +8,7 @@ import {DatePipe} from "@angular/common";
 import {first} from "rxjs";
 import {finalize} from "rxjs/operators";
 import * as moment from "moment";
+import {ConsultaResourceService} from "../../../../resources/consulta-resource.service";
 
 
 @Component({
@@ -36,6 +37,7 @@ export class AgendarConsultaComponent implements OnInit, OnDestroy {
               @Inject(MAT_DIALOG_DATA) public data: any,
               private ref: MatDialogRef<AgendarConsultaComponent>, private builder: FormBuilder,
               private service: ConsultasMedicoService,
+              private resource: ConsultaResourceService,
               private datePipe: DatePipe) {
   }
 
@@ -151,8 +153,14 @@ export class AgendarConsultaComponent implements OnInit, OnDestroy {
       setTimeout(() => {this.invalidForm = false}, 2000);
     } else {
       const model = this.transformModal(value);
-      // this.service.
-      console.log('model', model);
+      this.resource.create(model).pipe(first()).subscribe(response => {
+        if (response){
+          this.toastr.success('Consulta cadastrado com sucesso', 'Sucesso!');
+          this.ref.close(model);
+        }
+      }, error => {
+        console.log('error', error);
+      });
     }
   }
 

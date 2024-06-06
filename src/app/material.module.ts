@@ -12,6 +12,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
 import {MomentDateAdapter} from "@angular/material-moment-adapter";
 import {CpfCnpjMaskPipe} from "./component/pipe/pipeCpfCnpj";
+import {DatePipe} from "@angular/common";
 
 
 export const DATE_FORMAT = {
@@ -61,7 +62,8 @@ export const DATE_FORMAT = {
   ],
   providers: [
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT }
+    { provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT },
+    DatePipe
   ]
 })
 export class MaterialModule { }

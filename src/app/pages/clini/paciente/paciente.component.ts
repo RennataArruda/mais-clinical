@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {AuthService} from "../../../services/auth/auth.service";
 import {ToastrService} from "ngx-toastr";
@@ -14,7 +14,7 @@ import {ConfirmDialogComponent} from "../../../component/dialogs/confirm/confirm
   templateUrl: './paciente.component.html',
   styleUrls: ['./paciente.component.scss']
 })
-export class PacienteComponent {
+export class PacienteComponent implements OnInit, OnDestroy {
 
   result: any[] = [];
 
