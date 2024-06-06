@@ -55,28 +55,15 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
 
   onView(item: any) {
-<<<<<<< HEAD
-    this.openModal(item, 'Visualizar Consulta', AddEditConsultaComponent, true);
-=======
-    // this.openModal(item, 'Visualizar Paciente', AddEditConsultaComponent, true);
->>>>>>> 90e76dbe2bc3a7e73bf772f543328994d3b70b86
+   // this.openModal(item, 'Visualizar Consulta', AddEditConsultaComponent, true);
   }
 
   getData(){
     return this.result;
   }
 
-<<<<<<< HEAD
-  onAdd(){
-    this.openModal({}, 'Adicionar Consulta', AddEditConsultaComponent);
-  }
-
-  onEdit(item: any){
-    this.openModal(item, 'Editar Consulta', AddEditConsultaComponent);
-=======
   onEdit(item: any){
     // this.openModal(item, 'Editar Paciente', AddEditConsultaComponent);
->>>>>>> 90e76dbe2bc3a7e73bf772f543328994d3b70b86
   }
 
   onDelete(item: any){
