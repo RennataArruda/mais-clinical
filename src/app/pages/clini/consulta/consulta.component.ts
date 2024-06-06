@@ -28,7 +28,7 @@ export class ConsultaComponent {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["cpf", "nome_completo", "dataNascimento", "visualizar", "editar"];
+  displayedColumns: string[] = ["medico", "paciente", "dataAgendamento", "horario", "visualizar", "editar", "comprovante", "apagar"];
 
   constructor(private resource: ConsultaResourceService,
               private attAuth: AuthService,
@@ -41,6 +41,7 @@ export class ConsultaComponent {
   ngOnInit() {
     this.attAuth.validarUsuario();
     this.search();
+    console.log(this.result);
   }
 
   ngOnDestroy() {}
@@ -64,7 +65,7 @@ export class ConsultaComponent {
 
 
   onView(item: any) {
-    this.openModal(item, 'Visualizar Paciente', AddEditConsultaComponent, true);
+    this.openModal(item, 'Visualizar Consulta', AddEditConsultaComponent, true);
   }
 
   getData(){
@@ -72,11 +73,11 @@ export class ConsultaComponent {
   }
 
   onAdd(){
-    this.openModal({}, 'Adicionar Paciente', AddEditConsultaComponent);
+    this.openModal({}, 'Adicionar Consulta', AddEditConsultaComponent);
   }
 
   onEdit(item: any){
-    this.openModal(item, 'Editar Paciente', AddEditConsultaComponent);
+    this.openModal(item, 'Editar Consulta', AddEditConsultaComponent);
   }
 
   onDelete(item: any){
@@ -132,17 +133,17 @@ export class ConsultaComponent {
     if (model.id) {
       this.resource.delete(model.id).pipe(first()).subscribe(res => {
         if (res) {
-          this.toastr.success('Paciente deletado com sucesso', 'Sucesso!');
+          this.toastr.success('Consulta deletada com sucesso', 'Sucesso!');
           // Execute qualquer outra lógica necessária após a exclusão do paciente
         }
       }, error => {
         // Exibe o erro no console
         console.log(error);
         // Trate o erro conforme necessário, como exibir uma mensagem de erro para o usuário
-        this.toastr.error('Erro ao deletar paciente', 'Erro!');
+        this.toastr.error('Erro ao deletar consulta', 'Erro!');
       });
     } else {
-      console.error('O ID do paciente não está definido ou é inválido.');
+      console.error('O ID da consulta não está definido ou é inválido.');
       // Trate esse caso conforme necessário, como exibindo uma mensagem de erro para o usuário.
     }
   }

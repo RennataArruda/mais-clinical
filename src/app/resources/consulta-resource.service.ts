@@ -8,7 +8,7 @@ import {CommonUrl} from "./common-url";
 })
 export class ConsultaResourceService {
 
-  commonUrl = CommonUrl + '/paciente';
+  commonUrl = CommonUrl + '/consultas';
 
 
   constructor(private http: HttpClient) { }
