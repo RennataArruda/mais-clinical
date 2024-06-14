@@ -84,11 +84,11 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   }
 
   consultar(){
-
+    this.search();
   }
 
   search(){
-    this.resource.search().subscribe(response => {
+    this.resource.search().pipe(first()).subscribe(response => {
 
       this.result = response.sort((a, b) => a.id - b.id);
       this.totalRecords = this.result.length;
