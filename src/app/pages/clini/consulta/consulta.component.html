@@ -32,10 +32,10 @@
           </div>
 
           <div fxFlex="10.5" fxFlex.sm="11.5" fxFlex.xs="13.5" fxLayoutAlign="center center">
-            <a class="btn-circle" [matTooltip]="'Registrar Consulta'"
+            <button type="button" class="btn-circle" [matTooltip]="'Registrar Consulta'"
                (click)="onAdd()" mat-raised-button color="primary">
               <mat-icon style="margin-right: 0; margin-left: 0;">add</mat-icon>
-            </a>
+            </button>
           </div>
 
         </div>
@@ -62,7 +62,7 @@
           <td mat-cell *matCellDef="let element"> {{element.data_nascimento | dataFormat}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="horarioAgendamento">
+        <ng-container matColumnDef="horario">
           <th mat-header-cell *matHeaderCellDef> Horario </th>
           <td mat-cell *matCellDef="let element"> {{element.data_nascimento | dataFormat}} </td>
         </ng-container>
