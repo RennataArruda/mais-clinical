@@ -1,5 +1,6 @@
 export interface PacienteInterface {
   id: number,
+  ativo: boolean,
   cpf: string,
   nome_completo: string,
   data_nascimento: string,

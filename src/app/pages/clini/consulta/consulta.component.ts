@@ -8,6 +8,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {first} from 'rxjs';
 import {FormBuilder} from "@angular/forms";
 import {AgendarConsultaComponent} from "./agenda-consulta/agendar-consulta.component";
+import {EditarConsultaComponent} from "./editar-consulta/editar-consulta.component";
 
 @Component({
   selector: 'app-consulta',
@@ -63,10 +64,10 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   }
 
   onEdit(item: any){
-    // this.openModal(item, 'Editar Paciente', AddEditConsultaComponent);
+    this.openModal( 'Editar Consulta', EditarConsultaComponent, item);
   }
 
-  openModal( title: any,component:any) {
+  openModal( title: any,component:any, code?: any) {
     var _popup = this.dialog.open(component, {
       maxWidth: '100vw',
       width: '80%',
@@ -74,6 +75,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       exitAnimationDuration: '1000ms',
       data: {
         title: title,
+        code: code
       }
     });
     _popup.afterClosed().subscribe(item => {})

@@ -38,6 +38,7 @@ export class AddEditMedicoComponent implements OnInit {
     this.service.get(item.id).subscribe(item => {
       this.editdata = item;
       this.form.get('id')?.setValue(this.editdata.id);
+      this.form.get('ativo')?.setValue(this.editdata.ativo);
       this.form.get('codigo')?.setValue(this.editdata.codigo);
       this.form.get('email')?.setValue(this.editdata.email);
       this.form.get('cpf')?.setValue(this.editdata.cpf);
@@ -54,6 +55,7 @@ export class AddEditMedicoComponent implements OnInit {
 
     form = this.builder.group({
       id: this.builder.control(''),
+      ativo: this.builder.control(true),
       codigo: this.builder.control(''),
       nome: this.builder.control(''),
       email: this.builder.control(''),
@@ -82,6 +84,7 @@ export class AddEditMedicoComponent implements OnInit {
     if (!!model && model.id) {
       const _model = {
         id: model.id,
+        ativo: model.ativo,
         codigo: model.codigo,
         nome: model.nome,
         email: model.email,

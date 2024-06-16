@@ -169,7 +169,8 @@ export class AgendarConsultaComponent implements OnInit, OnDestroy {
       paciente_id: value.paciente && value.paciente.id ? value.paciente.id : null,
       medico_id: value.medico && value.medico.id ? value.medico.id : null,
       data_consulta: this.datePipe.transform(value.data_consulta, 'yyyy-MM-dd'),
-      horario: value.horario && value?.horario?.hora ? value.horario.hora : null
+      horario: value.horario && value?.horario?.hora ? value.horario.hora : null,
+      outras_informacoes: value.outras_informacoes || ''
     });
   }
 

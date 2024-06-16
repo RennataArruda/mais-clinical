@@ -30,6 +30,7 @@ import {AutocompleteConsultaModule} from "../../component/autocomplete-consulta/
 import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
 import {AgendarConsultaComponent} from "./consulta/agenda-consulta/agendar-consulta.component";
 import {HorariosMedicoComponent} from "./consulta/agenda-consulta/horarios-medico/horarios-medico.component";
+import {EditarConsultaComponent} from "./consulta/editar-consulta/editar-consulta.component";
 
 @NgModule({
   imports: [
@@ -73,7 +74,8 @@ import {HorariosMedicoComponent} from "./consulta/agenda-consulta/horarios-medic
     PacienteComponent,
     MedicoComponent,
     AddEditMedicoComponent,
-    ConsultaComponent
+    ConsultaComponent,
+    EditarConsultaComponent
   ],
   declarations: [
     SidenavComponent,
@@ -90,7 +92,8 @@ import {HorariosMedicoComponent} from "./consulta/agenda-consulta/horarios-medic
     AddEditPacienteComponent,
     MedicoComponent,
     AddEditMedicoComponent,
-    ConsultaComponent
+    ConsultaComponent,
+    EditarConsultaComponent
   ],
   bootstrap: [
     SidenavComponent,
@@ -99,7 +102,8 @@ import {HorariosMedicoComponent} from "./consulta/agenda-consulta/horarios-medic
     AddEditUsuarioComponent,
     AlterarSenhaComponent,
     ConfirmDialogComponent,
-    AgendarConsultaComponent
+    AgendarConsultaComponent,
+    EditarConsultaComponent
   ],
   providers: [
     provideNgxMask()

@@ -8,7 +8,7 @@ import {SearchPacienteDialogComponent} from "./search-paciente-dialog/search-pac
     template: `
       <mat-form-field class="w-100" >
         <mat-label class="color-primary">{{label}}</mat-label>
-        <input matInput type="search" [(ngModel)]="valueString" [required]="required"
+        <input matInput type="search" [(ngModel)]="valueString" [required]="required" [disabled]="disabled"
                (ngModelChange)="attValue($event)">
         <button mat-icon-button type="button" matSuffix (click)="open()">
           <mat-icon color="primary">search</mat-icon>
@@ -35,6 +35,9 @@ export class AutocompletePacienteComponent implements OnInit {
 
   @Input()
   required: boolean = false;
+
+  @Input()
+  disabled: boolean = false;
 
 
   constructor(private dialog: MatDialog) {

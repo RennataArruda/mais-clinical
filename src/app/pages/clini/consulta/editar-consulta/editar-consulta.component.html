@@ -1,0 +1,54 @@
+<div mat-dialog-title>
+  <div fxLayout="column" class="w-100" fxLayoutAlign="start center" style="padding-bottom: 10px">
+    <div fxLayout="row" class="w-100" fxLayoutAlign="start center" style="padding-bottom: 5px">
+      <mat-icon class="mat-icon-md color-primary">folder_copy</mat-icon>
+      <h2 class="color-primary">Agenda Consulta</h2>
+    </div>
+    <mat-divider class="w-100"></mat-divider>
+  </div>
+</div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="mat-typography">
+    <div style="padding: 10px;">
+      <div class="w-100" fxLayout="column" fxLayoutAlign="center center">
+        <div fxFlex="100" class="w-100">
+          <div fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between center" fxLayoutGap="1">
+            <mat-form-field fxFlex="29.5" fxFlex.sm="29.5" fxFlex.xs="100" color="primary">
+              <mat-label class="color-primary">Data da Consulta</mat-label>
+              <input matInput formControlName="data_consulta" type="date" [disabled]="true">
+            </mat-form-field>
+            <mat-form-field fxFlex="69.5" fxFlex.sm="69.5" fxFlex.xs="100" color="primary">
+              <mat-label class="color-primary">Medico</mat-label>
+              <input matInput formControlName="medico" type="text" [disabled]="true">
+            </mat-form-field>
+
+
+            <div fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between center" fxLayoutGap="1">
+              <horarios-medico fxFlex="44.5" fxFlex.xs="100" style="padding-bottom: 16px;"
+                               [horariosMedico]="horariosMedico" [valuePreview]="horarioInicial"
+                               (horarioSelecionado)="atualizarHorarioSelecionado($event)"></horarios-medico>
+
+              <div fxFlex="54.5" fxFlex.xs="100" fxLayout="row wrap" class="w-100" fxLayoutAlign="center center" fxLayoutGap="1">
+                <div fxFlex="100">
+                  <mat-form-field fxFlex="69.5" fxFlex.sm="69.5" fxFlex.xs="100" color="primary">
+                    <mat-label class="color-primary">Paciente</mat-label>
+                    <input matInput formControlName="paciente" type="text" [disabled]="true">
+                  </mat-form-field>
+                </div>
+
+                <mat-form-field class="w-100" fxFlex="100" color="primary">
+                  <mat-label>Observação</mat-label>
+                  <textarea matInput formControlName="outras_informacoes" rows="6"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayoutAlign="end center" class="w-100">
+    <button mat-raised-button type="submit" color="primary">Confirmar</button>
+    <a mat-raised-button color="warn" (click)="onClose()">Cancelar</a>
+  </mat-dialog-actions>
+</form>

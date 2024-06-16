@@ -62,4 +62,14 @@ export class HorariosMedicoComponent implements OnInit {
     this.horariosMedico$.next(value);
   }
 
+  @Input()
+  set valuePreview(value: any) {
+    if (!value) return;
+    const horario = this.horarios.find(h => h.hora === value.hora);
+    if (horario) {
+      horario.disponivel = false;
+      horario.selecionado = true;
+    }
+  }
+
 }

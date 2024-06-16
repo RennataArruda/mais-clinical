@@ -39,6 +39,7 @@ export class AddEditPacienteComponent implements OnInit {
       this.editdata = item;
       this.form.get('id')?.setValue(this.editdata.id);
       this.form.get('email')?.setValue(this.editdata.email);
+      this.form.get('ativo')?.setValue(this.editdata.ativo);
       this.form.get('cpf')?.setValue(this.editdata.cpf);
       this.form.get('nome_completo')?.setValue(this.editdata.nome_completo);
       this.form.get('endereco')?.setValue(this.editdata.endereco);
@@ -55,6 +56,7 @@ export class AddEditPacienteComponent implements OnInit {
   form = this.builder.group({
     id: this.builder.control(''),
     email: this.builder.control(''),
+    ativo: this.builder.control(true),
     cpf: this.builder.control(''),
     nome_completo: this.builder.control(''),
     endereco: this.builder.control(''),
@@ -85,6 +87,7 @@ export class AddEditPacienteComponent implements OnInit {
       const _model = {
         id: model.id,
         nome_completo: model.nome_completo,
+        ativo: model.ativo,
         email: model.email,
         cpf: model.cpf,
         endereco: model.endereco,
