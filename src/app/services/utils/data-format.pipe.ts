@@ -8,13 +8,10 @@ export class DataFormatPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if (value) {
-      const date = new Date(value); // Converte a string para um objeto Date
-      const day = date.getDate();
-      const month = date.getMonth() + 1; // Adiciona 1 porque os meses são zero indexados
-      const year = date.getFullYear();
+      const [year, month, day] = value.split('-');
 
-      // Formata a data para o formato desejado
-      return `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
+      // Return the new date string in the format 'DD/mm/YYYY'
+      return `${day}/${month}/${year}`;
     }
     return null;
   }

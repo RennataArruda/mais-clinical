@@ -149,7 +149,7 @@ export class EditarConsultaComponent implements OnInit, OnDestroy {
       id: value.id,
       paciente_id: value.paciente_id,
       medico_id: value.medico_id,
-      data_consulta: this.datePipe.transform(value.data_consulta, 'yyyy-MM-dd'),
+      data_consulta: this.datePipe.transform(this.form.get('data_consulta')?.value, 'yyyy-MM-dd'),
       horario: value.horario && value?.horario?.hora ? value.horario.hora : null,
       outras_informacoes: value.outras_informacoes || ''
     });

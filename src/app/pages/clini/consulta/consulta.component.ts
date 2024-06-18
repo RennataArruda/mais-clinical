@@ -42,8 +42,8 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
   form = this.builder.group({
     data_consulta: this.builder.control(''),
-    medico: this.builder.control(''),
-    paciente: this.builder.control(''),
+    medico: this.builder.control({}),
+    paciente: this.builder.control({}),
   });
 
   ngOnInit() {
@@ -86,13 +86,28 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   }
 
   consultar(){
-    this.search();
+    // const _search = Object.assign({}, this.form.value);
+    const data_consulta = this.form.get('data_consulta')?.value;
+    const medico = this.form.get('medico')?.value as any;
+    const paciente = this.form.get('paciente')?.value as any;
+
+    const _search = {
+      data_consulta: data_consulta,
+      id_medico: medico.id,
+      id_paciente: paciente.id
+    }
+    console.log(_search);
+    this.search(_search);
   }
 
-  search(){
-    this.resource.search().pipe(first()).subscribe(response => {
+  search(search?: any){
+    this.resource.search(search).pipe(first()).subscribe(response => {
 
-      this.result = response.sort((a, b) => a.id - b.id);
+      this.result = response.sort((a, b) => {
+        const dateA = new Date(a.data_consulta);
+        const dateB = new Date(b.data_consulta);
+        return dateB.getTime() - dateA.getTime();
+      });
       this.totalRecords = this.result.length;
       this.onPaginateChange({pageIndex: 0, pageSize: this.pageSize});
       console.log(this.result);
