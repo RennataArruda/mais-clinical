@@ -9,12 +9,14 @@ import {first} from 'rxjs';
 import {FormBuilder} from "@angular/forms";
 import {AgendarConsultaComponent} from "./agenda-consulta/agendar-consulta.component";
 import {EditarConsultaComponent} from "./editar-consulta/editar-consulta.component";
+import { ConfirmDialogService } from 'src/app/component/dialogs/confirm/confirm-dialog.service';
 import {VisualizarConsultaComponent} from "./visualizar-consulta/visualizar-consulta.component";
 
 @Component({
   selector: 'app-consulta',
   templateUrl: './consulta.component.html',
-  styleUrls: ['./consulta.component.scss']
+  styleUrls: ['./consulta.component.scss'],
+  providers: [ConfirmDialogService]
 })
 export class ConsultaComponent implements OnInit, OnDestroy {
 
@@ -31,13 +33,14 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["medico", "paciente", "dataAgendamento", "horario", "visualizar", "editar", "comprovante"];
+  displayedColumns: string[] = ["medico", "paciente", "dataAgendamento", "horario", "visualizar", "editar", "comprovante", "cancelar"];
 
   constructor(private resource: ConsultaResourceService,
               private attAuth: AuthService,
               private toastr: ToastrService,
               private builder: FormBuilder,
               private dialog: MatDialog,
+              private dialogService: ConfirmDialogService
   ) {
   }
 
@@ -67,7 +70,23 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   onEdit(item: any){
     this.openModal('Editar Consulta', EditarConsultaComponent, item);
   }
-
+  onCancel(item: any){
+    const message = item.ativo ? 'Deseja realmente cancelar este agendamento?';
+    this.dialogService.openConfirm(item, message).subscribe(result => {
+      if (result) {
+        const _model = {
+          ativo : !item.ativo
+        }
+        this.resource.can(_model, item.id).subscribe(response => {
+          this.toastr.success('Operação realizada com sucesso!', 'Sucesso!');
+          this.search();
+        }, error => {
+          this.toastr.error(error.error.message || 'Erro ao processar a requisição', 'Opa!');
+        });
+      }
+    });
+    ;
+  }
   openModal(title: any, component: any, code?: any) {
     const _popup = this.dialog.open(component, {
       maxWidth: '100vw',
