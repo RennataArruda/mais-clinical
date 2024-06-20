@@ -49,6 +49,16 @@ export class ConsultaResourceService {
     });
   }
 
+  cancelar(idConsulta: number): Observable<any> {
+    const token = sessionStorage.getItem('token') ?? '';
+    if (!token) {return of({});}
+    return this.http.put<any>(`${this.commonUrl}/${idConsulta}/cancelar`, {
+      headers: {
+        Authorization: token ? `${token}` : '',
+      }
+    });
+  }
+
   update(consulta: any, id: number): Observable<any> {
     const token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of({});}
