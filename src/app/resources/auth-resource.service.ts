@@ -8,20 +8,20 @@ import {CommonUrl} from "./common-url";
 })
 export class AuthResourceService {
 
-  commonUrl = CommonUrl + '/auth';
+  commonUrl = CommonUrl + '/usuarios';
 
   constructor(private http: HttpClient) {}
 
   login(data: any){
-    return this.http.post<any>(this.commonUrl + '/login', data);
+    return this.http.post<any>(this.commonUrl + '/session', data);
   }
 
   getUser(){
     const token = sessionStorage.getItem('token') ?? '';
     if (!token) return of(null);
-    return this.http.get<any>(this.commonUrl + '/me', {
+    return this.http.get<any>(CommonUrl + '/me', {
       headers: {
-        Authorization: token ? `${token}` : '',
+        Authorization: token ? `Bearer ${token}` : '',
       }
     });
   }

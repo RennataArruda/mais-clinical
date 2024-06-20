@@ -1,1 +1,1 @@
-export const CommonUrl: string = 'https://x8ki-letl-twmt.n7.xano.io/api:WwQP6b4e'
+export const CommonUrl: string = 'http://44.215.40.186:3333'

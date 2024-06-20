@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   validarUsuario(){
-    const rota = this.router.url === '/login';
+    const rota = this.router.url === '/usuarios/session';
     if (rota) {
         this.withOutUser();
         return;

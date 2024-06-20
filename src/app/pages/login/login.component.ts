@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
     } else {
       this.authResource.login(this.form.value).pipe(first()).subscribe(res => {
         if (res){
-          sessionStorage.setItem('token', res.authToken);
+          sessionStorage.setItem('token', res.token);
 
           this.authResource.getUser().pipe(finalize(() => {
             this.loading = false; // Desativar o spinner
