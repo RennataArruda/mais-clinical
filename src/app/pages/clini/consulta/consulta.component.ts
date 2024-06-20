@@ -9,6 +9,7 @@ import {first} from 'rxjs';
 import {FormBuilder} from "@angular/forms";
 import {AgendarConsultaComponent} from "./agenda-consulta/agendar-consulta.component";
 import {EditarConsultaComponent} from "./editar-consulta/editar-consulta.component";
+import {VisualizarConsultaComponent} from "./visualizar-consulta/visualizar-consulta.component";
 
 @Component({
   selector: 'app-consulta',
@@ -56,7 +57,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
 
   onView(item: any) {
-   // this.openModal(item, 'Visualizar Consulta', AddEditConsultaComponent, true);
+    this.openModal('Visualizar Consulta', VisualizarConsultaComponent, item);
   }
 
   getData(){
@@ -64,11 +65,11 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   }
 
   onEdit(item: any){
-    this.openModal( 'Editar Consulta', EditarConsultaComponent, item);
+    this.openModal('Editar Consulta', EditarConsultaComponent, item);
   }
 
-  openModal( title: any,component:any, code?: any) {
-    var _popup = this.dialog.open(component, {
+  openModal(title: any, component: any, code?: any) {
+    const _popup = this.dialog.open(component, {
       maxWidth: '100vw',
       width: '80%',
       enterAnimationDuration: '1000ms',
@@ -82,11 +83,10 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   }
 
   onAdd(){
-    this.openModal( 'Marcar Consulta', AgendarConsultaComponent);
+    this.openModal('Marcar Consulta', AgendarConsultaComponent);
   }
 
   consultar(){
-    // const _search = Object.assign({}, this.form.value);
     const data_consulta = this.form.get('data_consulta')?.value;
     const medico = this.form.get('medico')?.value as any;
     const paciente = this.form.get('paciente')?.value as any;
@@ -102,7 +102,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
   search(search?: any){
     this.resource.search(search).pipe(first()).subscribe(response => {
-
       this.result = response.sort((a, b) => {
         const dateA = new Date(a.data_consulta);
         const dateB = new Date(b.data_consulta);
@@ -129,7 +128,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     this.dataPagination = new MatTableDataSource(this.getData().slice(startIndex, endIndex));
   }
 
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataPagination.filter = filterValue.trim().toLowerCase();
@@ -138,7 +136,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       this.dataPagination.paginator.firstPage();
     }
   }
-
 
   getBodyClass(): string {
     let styleClass = '';
