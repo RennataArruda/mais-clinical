@@ -103,12 +103,13 @@ export class AgendarConsultaComponent implements OnInit, OnDestroy {
       medico_id: idMedico,
       data_consulta: this.dataSearch
     })
-    this.service.search(search).pipe(first(), finalize(() => {
-      this.hasMedicoEData = true;
-    })).subscribe(
-      (horarios: any) => {
+    this.service.search(search).pipe(first()).subscribe((horarios: any) => {
+
         if (horarios && horarios.length > 0){
-          this.horariosMedico = horarios.map((item: any) => item.horario);
+          this.hasMedicoEData = true;
+          setTimeout(() => {
+            this.horariosMedico = horarios;
+          }, 1000);
         } else {
           this.horariosMedico = [];
         }

@@ -7,6 +7,7 @@ import {ConsultasMedicoService} from "../../../../resources/consultas-medico.ser
 import {ConsultaResourceService} from "../../../../resources/consulta-resource.service";
 import {first} from "rxjs";
 import {finalize} from "rxjs/operators";
+import {TransformData} from "../../../../services/utils/transform-data";
 
 @Component({
   selector: 'app-editar-consulta',
@@ -25,6 +26,7 @@ export class EditarConsultaComponent implements OnInit, OnDestroy {
   horarioSelecionado: any;
   horarioInicial: any;
 
+  private transform: TransformData = new TransformData();
 
   constructor(private toastr: ToastrService,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -36,15 +38,13 @@ export class EditarConsultaComponent implements OnInit, OnDestroy {
 
   form = this.builder.group({
     id: this.builder.control(null),
-    data_consulta: this.builder.control(null, Validators.required),
+    data_consulta: this.builder.control('', Validators.required),
     horario: this.builder.control('', Validators.required),
     outras_informacoes: this.builder.control(''),
     paciente_id: this.builder.control(null),
     paciente: this.builder.control(null, Validators.required),
     medico_id: this.builder.control(null),
-    medico: this.builder.control(null, Validators.required),
-    _paciente_obj: this.builder.control(null),
-    _medico_obj: this.builder.control(null),
+    medico: this.builder.control(null, Validators.required)
   });
 
 
@@ -62,15 +62,18 @@ export class EditarConsultaComponent implements OnInit, OnDestroy {
       this.form.get('data_consulta')?.setValue(this.editdata.data_consulta);
       this.form.get('outras_informacoes')?.setValue(this.editdata.outras_informacoes);
       this.form.get('paciente_id')?.setValue(this.editdata.paciente_id);
-      this.form.get('paciente')?.setValue(this.editdata?._paciente_obj?.nome_completo);
+      this.form.get('paciente')?.setValue(this.editdata?.paciente?.nome_completo);
       this.form.get('medico_id')?.setValue(this.editdata.medico_id);
-      this.form.get('medico')?.setValue(this.editdata?._medico_obj?.nome);
-      this.form.get('_paciente_obj')?.setValue(this.editdata._paciente_obj);
-      this.form.get('_medico_obj')?.setValue(this.editdata._medico_obj);
+      this.form.get('medico')?.setValue(this.editdata?.medico?.nome);
 
       this.form.get('data_consulta')?.disable();
       this.form.get('medico')?.disable();
       this.form.get('paciente')?.disable();
+
+      if (!!this.editdata.data_consulta){
+        const dataConsulta = this.transform.transformData(this.editdata.data_consulta);
+        this.form.get('data_consulta')?.setValue(dataConsulta);
+      }
 
       this.searchHorariosMedico();
     });

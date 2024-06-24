@@ -50,6 +50,9 @@ export class AddEditMedicoComponent implements OnInit {
       this.form.get('conselho')?.setValue(this.editdata.conselho);
       this.form.get('uf_conselho')?.setValue(this.editdata.uf_conselho);
       this.form.get('especialidade')?.setValue(this.editdata.especialidade);
+
+      if (!!this.inputdata.view)
+        this.form.disable();
     });
   }
 

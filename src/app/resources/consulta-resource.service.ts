@@ -8,7 +8,7 @@ import {CommonUrl, getHeaders} from "./common-url";
 })
 export class ConsultaResourceService {
 
-  commonUrl = CommonUrl + '/consultas';
+  commonUrl = CommonUrl + '/consulta';
 
 
   constructor(private http: HttpClient) { }
@@ -19,7 +19,7 @@ export class ConsultaResourceService {
     token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of([]);}
     search = search ? search : {};
-    return this.http.post<any[]>(`${this.commonUrl}_search`, search, getHeaders());
+    return this.http.post<any[]>(`${this.commonUrl}s_search`, search, getHeaders());
   }
 
   create(consulta: any): Observable<any>{

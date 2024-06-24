@@ -92,7 +92,9 @@ export class SidenavComponent implements OnInit {
       }
     });
     _popup.afterClosed().subscribe(item => {
-      this.logout();
+      if (!!item) {
+        this.logout();
+      }
     })
   }
   closeSidenav(): void {

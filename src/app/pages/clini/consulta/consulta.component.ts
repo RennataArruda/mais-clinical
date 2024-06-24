@@ -93,10 +93,10 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
     const _search = {
       data_consulta: data_consulta,
-      id_medico: medico.id,
-      id_paciente: paciente.id
+      medico_id: medico.id,
+      paciente_id: paciente.id
     }
-    console.log(_search);
+
     this.search(_search);
   }
 
