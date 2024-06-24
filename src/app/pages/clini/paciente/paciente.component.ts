@@ -80,35 +80,6 @@ export class PacienteComponent implements OnInit, OnDestroy {
     this.openModal(item, 'Editar Paciente', AddEditPacienteComponent);
   }
 
-  openConfirm(model: any, message: string ,component:any) {
-    var _popup = this.dialog.open(component, {
-      width: '30%',
-      enterAnimationDuration: '1000ms',
-      exitAnimationDuration: '1000ms',
-      data: {
-        message: message
-      }
-    });
-    _popup.afterClosed().subscribe(item => {
-      if (item) {
-        const _model = {
-          ativo : !model.ativo
-        }
-        this.resource.ativarOrNot(_model, model.id).subscribe(response => {
-          this.toastr.success('Operação realizada com sucesso!', 'Sucesso!');
-          this.search();
-        }, error => {
-          this.toastr.error(error.error.message || 'Erro ao processar a requisição', 'Opa!');
-        });
-      }
-    })
-  }
-
-  inativar(item: any){
-    const message = item.ativo ? 'Deseja realmente inativar o paciente?' : 'Deseja realmente ativar o paciente?';
-    this.openConfirm(item, message, ConfirmDialogComponent);
-  }
-
   getBodyClass(): string {
     let styleClass = '';
     if(this.collapsed && this.screenWidth > 768) {

@@ -5,6 +5,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {PacienteResourceService} from "../../../../resources/paciente-resource.service";
 import {first} from "rxjs";
 import {PacienteInterface} from "../../../../interfaces/paciente.interface";
+import {TransformData} from "../../../../services/utils/transform-data";
 
 @Component({
   selector: 'app-add-edit-paciente',
@@ -19,6 +20,8 @@ export class AddEditPacienteComponent implements OnInit {
 
   cpfMask = '000.000.000-00';
   cnpjMask = '00.000.000/0000-00';
+
+  private transform: TransformData = new TransformData();
 
   constructor(private resource: PacienteResourceService,
               private toastr: ToastrService,
@@ -48,8 +51,18 @@ export class AddEditPacienteComponent implements OnInit {
       this.form.get('cns')?.setValue(this.editdata.cns);
       this.form.get('numero_carteira')?.setValue(this.editdata.numero_carteira);
       this.form.get('convenio_id')?.setValue(this.editdata.convenio_id);
-      this.form.get('descricao_convenio')?.setValue(this.editdata.descricao_convenio);
-      this.form.get('data_nascimento')?.setValue(this.editdata.data_nascimento);
+      // @ts-ignore
+      this.form.get('descricao_convenio')?.setValue({
+        id: this.editdata.convenio_id
+      });
+
+      if (!!this.editdata.data_nascimento){
+        const dataNasc = this.transform.transformData(this.editdata.data_nascimento);
+        this.form.get('data_nascimento')?.setValue(dataNasc);
+      }
+
+      if (!!this.inputdata.view)
+        this.form.disable();
     });
   }
 
@@ -83,7 +96,7 @@ export class AddEditPacienteComponent implements OnInit {
       return; // Retorna para evitar a execução do restante da função se o formulário for inválido
     }
     if (!!model && model.id) {
-      const convenio: any = model.descricao_convenio
+      const convenio: any = model.descricao_convenio || {};
       const _model = {
         id: model.id,
         nome_completo: model.nome_completo,
@@ -95,11 +108,13 @@ export class AddEditPacienteComponent implements OnInit {
         contato_adicional: model.contato_adicional,
         cns: model.cns,
         numero_carteira: model.numero_carteira,
-        convenio_id: convenio ? convenio.id : null,
+        convenio_id: !!convenio.id ? convenio.id : null,
         data_nascimento: model.data_nascimento
       };
       this.update(_model);
     } else {
+      const convenio: any = model.descricao_convenio || {};
+      model.convenio_id = !!convenio.id ? convenio.id : null;
       this.create(model);
     }
   }

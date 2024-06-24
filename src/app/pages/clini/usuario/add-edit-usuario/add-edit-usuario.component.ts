@@ -81,7 +81,8 @@ export class AddEditUsuarioComponent implements OnInit {
           nome: model.nome,
           email: model.email,
           ativo: model.ativo,
-          root: model.root
+          root: model.root,
+          password: this.inputdata?.code?.password
         })
         this.update(_model);
       } else {

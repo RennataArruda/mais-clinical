@@ -1,13 +1,14 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable, of} from "rxjs";
+import {CommonUrl, getHeaders} from "./common-url";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedicoResourceService {
 
-  commonUrl = 'https://x8ki-letl-twmt.n7.xano.io/api:WwQP6b4e/medico';
+  commonUrl =  CommonUrl + '/medico';
 
   constructor(private http: HttpClient) { }
   search(): Observable<any[]> {
@@ -16,11 +17,7 @@ export class MedicoResourceService {
 
     token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of([]);}
-    return this.http.get<any[]>(`${this.commonUrl}`, {
-      headers: {
-        Authorization: token ? `${token}` : '',
-      }
-    });
+    return this.http.get<any[]>(`${this.commonUrl}`, getHeaders());
   }
 
   create(medico: any): Observable<any>{
@@ -29,31 +26,19 @@ export class MedicoResourceService {
     // @ts-ignore
     token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of({});}
-    return this.http.post<any>(this.commonUrl, medico,{
-      headers: {
-        Authorization: token ? `${token}` : '',
-      }
-    });
+    return this.http.post<any>(this.commonUrl, medico,getHeaders());
   }
 
   get(idMedico: number): Observable<any> {
     const token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of({});}
-    return this.http.get<any>(`${this.commonUrl}/${idMedico}`, {
-      headers: {
-        Authorization: token ? `${token}` : '',
-      }
-    });
+    return this.http.get<any>(`${this.commonUrl}/${idMedico}`, getHeaders());
   }
 
   update(medico: any, idMedico: number): Observable<any> {
     const token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of({});}
-    return this.http.patch<any>(`${this.commonUrl}/${idMedico}`, medico, {
-      headers: {
-        Authorization: token ? `${token}` : '',
-      }
-    });
+    return this.http.put<any>(`${this.commonUrl}/${idMedico}`, medico, getHeaders());
   }
 
   delete(idMedico: number): Observable<any> {
@@ -62,11 +47,7 @@ export class MedicoResourceService {
       return of({});
     }
 
-    return this.http.delete<any>(`${this.commonUrl}/${idMedico}`, {
-      headers: {
-        Authorization: token ? `${token}` : '',
-      }
-    });
+    return this.http.delete<any>(`${this.commonUrl}/${idMedico}`, getHeaders());
   }
 
 

@@ -64,24 +64,11 @@
         </td>
       </ng-container>
 
-<<<<<<< HEAD
-=======
-<!--      <ng-container matColumnDef="apagar">-->
-<!--        <th mat-header-cell *matHeaderCellDef></th>-->
-<!--        <td mat-cell *matCellDef="let element">-->
-<!--          <button mat-icon-button color="primary" [matTooltip]="'Apagar Paciente'"-->
-<!--                  (click)="onDelete(element)">-->
-<!--            <mat-icon>delete</mat-icon>-->
-<!--          </button>-->
-<!--        </td>-->
-<!--      </ng-container>-->
->>>>>>> debe01177c993e69a015acc0431cb2231a76af0c
-
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">Não há dados para exibir</td>
+        <td class="mat-cell" colspan="4" style="text-align: center">Não há dados para exibir</td>
       </tr>
 
     </table>

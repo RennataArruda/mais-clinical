@@ -21,12 +21,14 @@ export class BodyComponent implements OnInit {
 
   ngOnInit() {
     this.totalizadoresService.totalConsultasDia().subscribe((response) => {
-      this.consultasDia = response;
+      if (!!response)
+        this.consultasDia = response.totalConsultasHoje;
     });
 
     // Chamada para obter o total de consultas canceladas
     this.totalizadoresService.consultasCanceladas().subscribe((response) => {
-      this.consultasCanceladas = response;
+      if (!!response)
+        this.consultasCanceladas = response.totalConsultasCanceladas;
     });
   }
 

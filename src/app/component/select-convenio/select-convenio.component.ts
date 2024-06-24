@@ -7,7 +7,7 @@ import {FormGroup} from "@angular/forms";
   template: `
     <mat-form-field color="primary" class="w-100">
       <mat-label class="color-primary">{{label}}</mat-label>
-      <mat-select [compareWith]="compare" [(value)]="value" (selectionChange)="attValue($event)">
+      <mat-select [compareWith]="compare" [(value)]="value" (selectionChange)="attValue($event)" [disabled]="disabled">
         <mat-option *ngFor="let item of data" [value]="item">{{item.convenio}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -22,6 +22,9 @@ export class SelectConvenioComponent implements OnInit {
 
   @Input()
   label: string = '';
+
+  @Input()
+  disabled: boolean = false;
 
 
   @Input()

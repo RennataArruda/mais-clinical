@@ -50,7 +50,7 @@
             <mat-error *ngIf="invalidForm" class="error" >{{'Campo Obrigatório'}}</mat-error>
           </mat-form-field>
           <select-convenio fxFlex="49.5" fxFlex.sm="100" fxFlex.xs="100" label="Convênio"
-                           [form]="form" [property]="'descricao_convenio'"
+                           [form]="form" [property]="'descricao_convenio'" [disabled]="!!inputdata?.view"
                            [inputValue]="form.get('descricao_convenio')?.value">
           </select-convenio>
 

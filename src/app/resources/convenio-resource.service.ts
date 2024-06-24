@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {CommonUrl} from "./common-url";
+import {CommonUrl, getHeaders} from "./common-url";
 import {HttpClient} from "@angular/common/http";
 import {Observable, of} from "rxjs";
 
@@ -22,10 +22,6 @@ export class ConvenioResourceService {
     if (!token) {
       return of([]);
     }
-    return this.http.get<any[]>(`${this.commonUrl}`, {
-      headers: {
-        Authorization: token ? `${token}` : '',
-      }
-    });
+    return this.http.get<any[]>(`${this.commonUrl}`, getHeaders());
   }
 }
