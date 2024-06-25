@@ -13,7 +13,8 @@ export class BodyComponent implements OnInit {
   @Input() screenWidth = 0;
 
   consultasDia = 0;
-  consultasCanceladas = 0; // Nova propriedade para consultas canceladas
+  consultasCanceladas = 0;
+  prestadores = 0; // Nova propriedade para consultas canceladas
 
   constructor(private dialog: MatDialog,
               private totalizadoresService: TotalizadoresResourceService) {
@@ -28,6 +29,12 @@ export class BodyComponent implements OnInit {
     this.totalizadoresService.consultasCanceladas().subscribe((response) => {
       this.consultasCanceladas = response;
     });
+
+    this.totalizadoresService.totalPrestadores().subscribe((response) => {
+      this.prestadores = response;
+    });
+
+
   }
 
   getBodyClass(): string {
