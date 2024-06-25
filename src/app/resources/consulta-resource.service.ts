@@ -40,11 +40,7 @@ export class ConsultaResourceService {
   cancelar(idConsulta: number): Observable<any> {
     const token = sessionStorage.getItem('token') ?? '';
     if (!token) {return of({});}
-    return this.http.put<any>(`${this.commonUrl}/${idConsulta}/cancelar`, {
-      headers: {
-        Authorization: token ? `${token}` : '',
-      }
-    });
+    return this.http.put<any>(`${this.commonUrl}/toggleConsulta/${idConsulta}`, {}, getHeaders());
   }
 
   update(consulta: any, id: number): Observable<any> {

@@ -111,7 +111,10 @@ export class AgendarConsultaComponent implements OnInit, OnDestroy {
             this.horariosMedico = horarios;
           }, 1000);
         } else {
-          this.horariosMedico = [];
+          this.hasMedicoEData = true;
+          setTimeout(() => {
+            this.horariosMedico = [];
+          }, 1000);
         }
       }
     );

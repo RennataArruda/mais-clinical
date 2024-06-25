@@ -47,6 +47,14 @@
       <div *ngIf="dataPagination" class="w-100">
       <table mat-table [dataSource]="dataPagination" class="w-100">
 
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon *ngIf="!element.is_cancelada" color="primary">check_circle</mat-icon>
+            <mat-icon *ngIf="!!element.is_cancelada" color="warn">block</mat-icon>
+          </td>
+        </ng-container>
+
         <ng-container matColumnDef="medico">
           <th mat-header-cell *matHeaderCellDef> Medico </th>
           <td mat-cell *matCellDef="let element"> {{element?.medico?.nome}} </td>
@@ -90,7 +98,7 @@
         <ng-container matColumnDef="editar">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button color="primary" [matTooltip]="'Editar agendamento'"
+            <button mat-icon-button color="primary" *ngIf="!element.is_cancelada" [matTooltip]="'Editar agendamento'"
                     (click)="onEdit(element)">
               <mat-icon>edit</mat-icon>
             </button>
@@ -99,7 +107,7 @@
         <ng-container matColumnDef="cancelar">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button color="primary" [matTooltip]="'Cancelar agendamento'"
+            <button mat-icon-button color="primary" *ngIf="!element.is_cancelada" [matTooltip]="'Cancelar agendamento'"
                     (click)="onCancel(element)">
               <mat-icon>block</mat-icon>
             </button>

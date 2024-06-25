@@ -33,7 +33,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   pageSize: number = 5;
   pageEvent: any;
 
-  displayedColumns: string[] = ["medico", "paciente", "dataAgendamento", "horario", "visualizar", "editar", "comprovante", "cancelar"];
+  displayedColumns: string[] = ["status", "medico", "paciente", "dataAgendamento", "horario", "visualizar", "editar", "comprovante", "cancelar"];
 
   constructor(private resource: ConsultaResourceService,
               private attAuth: AuthService,
@@ -71,13 +71,13 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     this.openModal('Editar Consulta', EditarConsultaComponent, item);
   }
   onCancel(item: any){
-    const message = item.ativo ? 'Deseja realmente cancelar este agendamento?';
+    const message = 'Deseja realmente cancelar este agendamento?';
     this.dialogService.openConfirm(item, message).subscribe(result => {
       if (result) {
         const _model = {
           ativo : !item.ativo
         }
-        this.resource.can(_model, item.id).subscribe(response => {
+        this.resource.cancelar(item.id).subscribe(response => {
           this.toastr.success('Operação realizada com sucesso!', 'Sucesso!');
           this.search();
         }, error => {
@@ -85,7 +85,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
         });
       }
     });
-    ;
   }
   openModal(title: any, component: any, code?: any) {
     const _popup = this.dialog.open(component, {
@@ -98,7 +97,9 @@ export class ConsultaComponent implements OnInit, OnDestroy {
         code: code
       }
     });
-    _popup.afterClosed().subscribe(item => {})
+    _popup.afterClosed().subscribe(item => {
+      this.search();
+    })
   }
 
   onAdd(){
