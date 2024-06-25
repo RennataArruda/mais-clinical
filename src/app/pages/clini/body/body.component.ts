@@ -13,8 +13,9 @@ export class BodyComponent implements OnInit {
   @Input() screenWidth = 0;
 
   consultasDia = 0;
-  consultasCanceladas = 0; // Nova propriedade para consultas canceladas
-
+  consultasCanceladas = 0;
+  prestadores = 0; // Nova propriedade para consultas canceladas
+  pacientesCadastrados = 0; 
   constructor(private dialog: MatDialog,
               private totalizadoresService: TotalizadoresResourceService) {
   }
@@ -30,6 +31,16 @@ export class BodyComponent implements OnInit {
       if (!!response)
         this.consultasCanceladas = response.totalConsultasCanceladas;
     });
+
+    this.totalizadoresService.totalPrestadores().subscribe((response) => {
+      this.prestadores = response;
+    });
+
+     this.totalizadoresService.pacientesCadastrados().subscribe((response) => {
+      this.pacientesCadastrados = response;
+    });
+
+
   }
 
   getBodyClass(): string {

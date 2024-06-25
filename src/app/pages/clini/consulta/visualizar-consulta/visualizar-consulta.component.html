@@ -1,0 +1,48 @@
+<div mat-dialog-title>
+  <div fxLayout="column" class="w-100" fxLayoutAlign="start center" style="padding-bottom: 10px">
+    <div fxLayout="row" class="w-100" fxLayoutAlign="start center" style="padding-bottom: 5px">
+      <mat-icon class="mat-icon-md color-primary">folder_copy</mat-icon>
+      <h2 class="color-primary">Agenda Consulta</h2>
+    </div>
+    <mat-divider class="w-100"></mat-divider>
+  </div>
+</div>
+<form [formGroup]="form">
+  <mat-dialog-content class="mat-typography">
+    <div style="padding: 10px;">
+      <div class="w-100" fxLayout="column" fxLayoutAlign="center center">
+        <div fxFlex="100" class="w-100">
+          <div fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between center" fxLayoutGap="1">
+            <mat-form-field fxFlex="45" fxFlex.sm="45" fxFlex.xs="100" color="primary">
+              <mat-label class="color-primary">Data da Consulta</mat-label>
+              <input matInput formControlName="data_consulta" type="date" [disabled]="true">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="45" fxFlex.sm="45" fxFlex.xs="100" color="primary">
+              <mat-label class="color-primary">Hora da Consulta</mat-label>
+              <input matInput formControlName="horario" type="time" [disabled]="true">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="100" fxFlex.sm="100" fxFlex.xs="100" color="primary">
+              <mat-label class="color-primary">Médico</mat-label>
+              <input matInput formControlName="medico" type="text" [disabled]="true">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="100" fxFlex.sm="100" fxFlex.xs="100" color="primary">
+              <mat-label class="color-primary">Paciente</mat-label>
+              <input matInput formControlName="paciente" type="text" [disabled]="true">
+            </mat-form-field>
+
+            <mat-form-field class="w-100" fxFlex="100" color="primary">
+              <mat-label>Observação</mat-label>
+              <textarea matInput formControlName="outras_informacoes" rows="3" [disabled]="true"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayoutAlign="end center" class="w-100">
+    <a mat-raised-button color="warn" (click)="onClose()">Cancelar</a>
+  </mat-dialog-actions>
+</form>
