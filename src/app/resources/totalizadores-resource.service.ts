@@ -60,4 +60,15 @@ export class TotalizadoresResourceService {
       }
     });
   }
+    pacientesCadastrados(): Observable<number> {
+    let token: string;
+    // @ts-ignore
+    token = sessionStorage.getItem('token') ?? '';
+    if (!token) { return of(0); }
+    return this.http.post<number>(`${this.commonUrl}/pacientes_cadastrados`, {}, {
+      headers: {
+        Authorization: token ? `${token}` : '',
+      }
+    });
+  }
 }
