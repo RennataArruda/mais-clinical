@@ -59,8 +59,8 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   ngOnDestroy() {}
 
 
-  onView(item: any) {
-    this.openModal('Visualizar Consulta', VisualizarConsultaComponent, item);
+  onView(item: any, isPrint?: boolean) {
+    this.openModal('Visualizar Consulta', VisualizarConsultaComponent, item, isPrint);
   }
 
   getData(){
@@ -86,7 +86,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       }
     });
   }
-  openModal(title: any, component: any, code?: any) {
+  openModal(title: any, component: any, code?: any, isPrint?: boolean) {
     const _popup = this.dialog.open(component, {
       maxWidth: '100vw',
       width: '80%',
@@ -94,7 +94,8 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       exitAnimationDuration: '1000ms',
       data: {
         title: title,
-        code: code
+        code: code,
+        isPrint: isPrint
       }
     });
     _popup.afterClosed().subscribe(item => {
@@ -167,4 +168,5 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     return styleClass;
   }
 
+  protected readonly print = print;
 }

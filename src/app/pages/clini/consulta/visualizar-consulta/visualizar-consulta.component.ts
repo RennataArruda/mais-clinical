@@ -18,6 +18,8 @@ export class VisualizarConsultaComponent implements OnInit, OnDestroy {
   inputdata: any;
   editdata: any;
   clean: number = 0;
+  isPrint: boolean = false;
+  isCancelada: boolean = false;
   private transform: TransformData = new TransformData();
   constructor(private toastr: ToastrService,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -42,6 +44,8 @@ export class VisualizarConsultaComponent implements OnInit, OnDestroy {
     if(!!this.inputdata.code && !!this.inputdata.code.id){
       this.setData(this.inputdata.code)
     }
+
+    this.isPrint = this.inputdata.isPrint;
   }
 
   setData(item: any) {
@@ -61,6 +65,8 @@ export class VisualizarConsultaComponent implements OnInit, OnDestroy {
       this.form.get('paciente')?.disable();
       this.form.get('outras_informacoes')?.disable();
 
+      this.isCancelada = this.editdata.is_cancelada;
+
       if (!!this.editdata.data_consulta){
         const dataConsulta = this.transform.transformData(this.editdata.data_consulta);
         this.form.get('data_consulta')?.setValue(dataConsulta);
@@ -70,6 +76,64 @@ export class VisualizarConsultaComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+  }
+
+  onPrint() {
+    // @ts-ignore
+    const printContent: HTMLElement = document.getElementById('printArea');
+    // @ts-ignore
+    if (!printContent) {
+      console.error('Elemento com ID "printArea" não encontrado.');
+      return;
+    }
+
+    // Clonar o conteúdo do modal
+    const clonedContent = printContent.cloneNode(true) as HTMLElement;
+
+    // Substituir os inputs pelos seus valores
+    const inputs = clonedContent.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+      const value = (input as HTMLInputElement).value;
+      const span = document.createElement('span');
+      span.textContent = value;
+      input.parentNode?.replaceChild(span, input);
+    });
+
+    const WindowPrt = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+
+    if (!WindowPrt || WindowPrt.closed || typeof WindowPrt.closed === 'undefined') {
+      console.error('Falha ao abrir a janela de impressão.');
+      return;
+    }
+
+    const styles = Array.from(document.querySelectorAll('style, link[rel="stylesheet"]'))
+      .map(style => style.outerHTML)
+      .join('\n');
+
+    WindowPrt.document.write(`
+    <html>
+      <head>
+        <style>
+          /* Adicione seus estilos de impressão específicos aqui, se necessário */
+        </style>
+        ${styles}
+      </head>
+      <body>
+        ${clonedContent.innerHTML}
+        <script>
+          // Função para fechar a janela ao clicar em "Cancelar" ou "Fechar"
+          function closeWindow() {
+            window.close();
+          }
+          // Adiciona um listener para fechar a janela quando o usuário clicar no botão de "Cancelar"
+          window.addEventListener('afterprint', closeWindow);
+        </script>
+      </body>
+    </html>
+  `);
+    WindowPrt.document.close();
+    WindowPrt.focus();
+    WindowPrt.print();
   }
 
   private transformModal(value: any){
